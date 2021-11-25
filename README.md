@@ -42,7 +42,7 @@ on:
     types: [published]
 
 jobs:
-  publish-to-hex-pm:
+  quality-assurance-all:
     uses: straw-hat-team/github-actions-workflows/.github/workflows/elixir-quality-assurance-all.yml@master
     with:
       elixir-version: '1.11'
