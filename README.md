@@ -56,3 +56,18 @@ jobs:
       linter_enabled: true
       typespec_enabled: true
 ```
+
+#### Dialyzer setup
+
+You must configure Dialyzer as follow:
+
+```elixir
+def project do
+  [
+    dialyzer: [
+      plt_core_path: "priv/plts",
+      plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+    ]
+  ]
+end
+```
