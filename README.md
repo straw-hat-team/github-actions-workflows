@@ -25,7 +25,7 @@ jobs:
       HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
 ```
 
-### Elixir Quality Assurance All
+### Elixir Quality Assurance
 
 Enables all the Quality Assurance tools:
 
