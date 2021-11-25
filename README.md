@@ -35,16 +35,24 @@ Enables all the Quality Assurance tools:
 - Typespec (mix dialyzer)
 
 ```yaml
-name: Hex Publish
+name: Elixir Quality Assurance
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
-  quality-assurance-all:
-    uses: straw-hat-team/github-actions-workflows/.github/workflows/elixir-quality-assurance-all.yml@master
+  quality-assurance:
+    uses: straw-hat-team/github-actions-workflows/.github/workflows/elixir-quality-assurance.yml@master
     with:
       elixir-version: '1.11'
       otp-version: '22.3'
+      testing_enabled: true
+      formatter_enabled: true
+      linter_enabled: true
+      typespec_enabled: true
 ```
