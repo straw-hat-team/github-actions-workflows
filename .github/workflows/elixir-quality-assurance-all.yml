@@ -9,10 +9,16 @@ on:
         description: The Erlang version
         type: string
         required: true
+      testing_enabled:
+        description: Enables the testing job
+        type: boolean
+        required: false
+        default: true
 
 jobs:
   test:
     name: Test
+    if: ${{ inputs.testing_enabled }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
