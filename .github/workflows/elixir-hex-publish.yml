@@ -19,6 +19,8 @@ jobs:
     name: Publish to Hex.pm
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
     - name: Set up Elixir
       uses: erlef/setup-elixir@v1
       with:
