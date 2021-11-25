@@ -1,24 +1,25 @@
-name: Elixir Quality Assurance
-
 on:
-  push:
-    branches:
-      - $default-branch
-  pull_request:
-    branches:
-      - $default-branch
+  workflow_call:
+    inputs:
+      elixir-version:
+        description: The Elixir version
+        type: string
+        required: true
+      otp-version:
+        description: The Erlang version
+        type: string
+        required: true
 
 jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
     - name: Set up Elixir
       uses: erlef/setup-beam@v1
       with:
-        elixir-version: '1.11'
-        otp-version: '22.3'
+        elixir-version: ${{ inputs.elixir-version }}
+        otp-version: ${{ inputs.otp-version }}
     - name: Restore dependencies cache
       uses: actions/cache@v2
       with:
@@ -41,8 +42,8 @@ jobs:
     - name: Set up Elixir
       uses: erlef/setup-beam@v1
       with:
-        elixir-version: '1.11'
-        otp-version: '22.3'
+        elixir-version: ${{ inputs.elixir-version }}
+        otp-version: ${{ inputs.otp-version }}
     - name: Run Formatter
       run: mix format --check-formatted
 
@@ -54,8 +55,8 @@ jobs:
     - name: Set up Elixir
       uses: erlef/setup-beam@v1
       with:
-        elixir-version: '1.11'
-        otp-version: '22.3'
+        elixir-version: ${{ inputs.elixir-version }}
+        otp-version: ${{ inputs.otp-version }}
     - name: Restore dependencies cache
       uses: actions/cache@v2
       with:
@@ -79,8 +80,8 @@ jobs:
         id: beam
         uses: erlef/setup-beam@v1
         with:
-          elixir-version: '1.11'
-          otp-version: '22.3'
+          elixir-version: ${{ inputs.elixir-version }}
+          otp-version: ${{ inputs.otp-version }}
       - name: Restore dependencies cache
         uses: actions/cache@v2
         with:

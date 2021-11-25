@@ -4,13 +4,11 @@ on:
       elixir-version:
         description: The Elixir version
         type: string
-        default: '1.11'
-        required: false
+        required: true
       otp-version:
         description: The Erlang version
         type: string
-        default: '22.3'
-        required: false
+        required: true
     secrets:
       HEX_API_KEY:
         description: The hex.pm API key
@@ -21,7 +19,6 @@ jobs:
     name: Publish to Hex.pm
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
     - name: Set up Elixir
       uses: erlef/setup-elixir@v1
       with:
