@@ -7,6 +7,10 @@ Enables Quality Assurance tools:
 - Linter (mix credo)
 - Typespec (mix dialyzer)
 
+## Usage
+
+Create a new GitHub Workflow (ex: `.github/workflows/ci.yml`) with the following content:
+
 ```yaml
 name: Elixir Quality Assurance
 
@@ -98,7 +102,7 @@ You probably do not want to commit the `plts` files therefore add the following 
 ** (Mix) The task "credo" could not be found
 ```
 
-You forgot to add the `credo` dependency.
+Verify that `credo` dependency was added correctly.
 
 ### Dialyzer
 
@@ -106,10 +110,10 @@ You forgot to add the `credo` dependency.
 :dialyzer.run error: No such file, directory or application: ".../_build/dev/dialyxir_erlang-..._elixir-..._deps-dev.plt"
 ```
 
-You probably forgot to add the proper Dialyzer configuration.
+Verify the Dialyzer configuration follows the guidelines.
 
 ```log
 ** (Mix) The task "dialyzer" could not be found
 ```
 
-You forgot to add the `dialyzer` dependency.
+Verify that `dialyzer` dependency was added correctly.
