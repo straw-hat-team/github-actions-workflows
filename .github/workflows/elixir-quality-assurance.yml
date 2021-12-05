@@ -9,22 +9,22 @@ on:
         description: The Erlang version
         type: string
         required: true
-      testing_enabled:
+      testing-enabled:
         description: Enables the testing job
         type: boolean
         required: false
         default: true
-      formatter_enabled:
+      formatter-enabled:
         description: Enables the formatter job
         type: boolean
         required: false
         default: true
-      linter_enabled:
+      credo-enabled:
         description: Enables the linter job
         type: boolean
         required: false
         default: true
-      typespec_enabled:
+      dialyzer-enabled:
         description: Enables the typespec job
         type: boolean
         required: false
@@ -33,7 +33,7 @@ on:
 jobs:
   test:
     name: Test
-    if: ${{ inputs.testing_enabled }}
+    if: ${{ inputs.testing-enabled }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -59,7 +59,7 @@ jobs:
 
   format:
     name: Format
-    if: ${{ inputs.formatter_enabled }}
+    if: ${{ inputs.formatter-enabled }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -71,9 +71,9 @@ jobs:
     - name: Run Formatter
       run: mix format --check-formatted
 
-  linter:
-    name: Lint
-    if: ${{ inputs.linter_enabled }}
+  credo:
+    name: Credo
+    if: ${{ inputs.credo-enabled }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -99,7 +99,7 @@ jobs:
 
   dialyzer:
     name: Dialyzer
-    if: ${{ inputs.typespec_enabled }}
+    if: ${{ inputs.dialyzer-enabled }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

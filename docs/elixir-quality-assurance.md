@@ -24,23 +24,92 @@ jobs:
     with:
       elixir-version: '1.11'
       otp-version: '22.3'
-      testing_enabled: true
-      formatter_enabled: true
-      linter_enabled: true
-      typespec_enabled: true
+      testing-enabled: true
+      formatter-enabled: true
+      credo-enabled: true
+      dialyzer-enabled: true
 ```
 
 ## Dialyzer setup
 
-You must configure Dialyzer as follow:
+Add the [Dialyxir](https://github.com/jeremyjh/dialyxir) dependency:
 
 ```elixir
-def project do
-  [
-    dialyzer: [
-      plt_core_path: "priv/plts",
-      plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+defmodule MyLibrary.MixProject do
+  use Mix.Project
+
+  def project do
+    [
+      # ...
+      deps: deps()
     ]
-  ]
+  end
+
+  defp deps do
+    [
+      # ...
+      {:dialyxir, ">= 0.0.0", only: [:dev], runtime: false}
+    ]
+  end
 end
 ```
+
+In your `mix.exs`, you must configure Dialyzer with the following settings:
+
+```elixir
+defmodule MyLibrary.MixProject do
+  use Mix.Project
+
+  def project do
+    [
+      # ...
+      dialyzer: [
+        # ... other dialyzer settings
+        plt_core_path: "priv/plts",
+        plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+      ]
+    ]
+  end
+end
+```
+
+Make sure that `priv/plts` directory exists before running Dialyzer. Create a file called `priv/plts/.gitkeep` and
+commit the file as part of your repository to make sure the directory exists at all time.
+
+```shell
+# Creates priv/plts directory if it doesn't exists
+mdkir -p priv/plts
+# Create an empty file
+touch priv/plts/.gitkeep
+```
+
+You probably do not want to commit the `plts` files therefore add the following content to your `.gitignore` file:
+
+```.gitignore
+/priv/plts/*.plt
+/priv/plts/*.plt.hash
+```
+
+## Troubleshooting
+
+### Credo
+
+```log
+** (Mix) The task "credo" could not be found
+```
+
+You forgot to add the `credo` dependency.
+
+### Dialyzer
+
+```log
+:dialyzer.run error: No such file, directory or application: ".../_build/dev/dialyxir_erlang-..._elixir-..._deps-dev.plt"
+```
+
+You probably forgot to add the proper Dialyzer configuration.
+
+```log
+** (Mix) The task "dialyzer" could not be found
+```
+
+You forgot to add the `dialyzer` dependency.
