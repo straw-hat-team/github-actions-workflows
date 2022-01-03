@@ -82,7 +82,7 @@ commit the file as part of your repository to make sure the directory exists at 
 
 ```shell
 # Creates priv/plts directory if it doesn't exists
-mdkir -p priv/plts
+mkdir -p priv/plts
 # Create an empty file
 touch priv/plts/.gitkeep
 ```
