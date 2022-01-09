@@ -9,9 +9,6 @@ inputs:
   otp-version:
     description: The Erlang version
     required: true
-  hex-api-key:
-    description: The hex.pm API key
-    required: true
 
 runs:
   using: composite
