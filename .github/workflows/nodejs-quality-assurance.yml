@@ -1,0 +1,36 @@
+on:
+  workflow_call:
+    inputs:
+      jest-enabled:
+        description: Enables the Jest testing job
+        type: boolean
+        required: false
+        default: true
+      prettier-enabled:
+        description: Enables the Prettier formatter job
+        type: boolean
+        required: false
+        default: true
+
+jobs:
+  jest:
+    name: Jest
+    if: ${{ inputs.jest-enabled }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: straw-hat-team/github-actions-workflows/setup-nodejs-from-tool-versions@master
+      - run: yarn install --immutable
+      - run: yarn jest --ci --coverage
+        env:
+          CI: true
+
+  prettier:
+    name: Prettier
+    if: ${{ inputs.prettier-enabled }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: straw-hat-team/github-actions-workflows/setup-nodejs-from-tool-versions@master
+    - run: yarn install --immutable
+    - run: yarn prettier --check */** --ignore-unknown --no-error-on-unmatched-pattern

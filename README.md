@@ -14,3 +14,7 @@ A set of GitHub Actions Workflow Templates.
 
 - [Elixir Hex Publish](.github/workflows/elixir-hex-publish.md): publish Elixir packages to https://hex.pm/.
 - [Elixir Quality Assurance](.github/workflows/elixir-quality-assurance.md): enables Quality Assurance tools.
+
+### NodeJS
+
+- [NodeJS Quality Assurance](.github/workflows/nodejs-quality-assurance.md): enables Quality Assurance tools.
