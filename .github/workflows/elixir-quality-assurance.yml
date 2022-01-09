@@ -39,7 +39,7 @@ jobs:
       - uses: straw-hat-team/github-actions-workflows/asdf/get-version@testing-elixir
         id: elixir-version
         with:
-          plugin-name: elixir
+          plugin-name: nodejs
       - shell: sh
         run: |
           echo ${{ steps.elixir-version.outputs.plugin-version }}
