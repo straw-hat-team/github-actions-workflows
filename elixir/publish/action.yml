@@ -16,8 +16,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
     - name: Set up Elixir
       uses: erlef/setup-elixir@v1
       with:
@@ -39,4 +37,4 @@ runs:
       shell: sh
       run: mix hex.publish --yes
       env:
-        HEX_API_KEY: ${{ inputs.HEX_API_KEY }}
+        HEX_API_KEY: ${{ inputs.hex-api-key }}
