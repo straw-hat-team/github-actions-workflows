@@ -13,37 +13,11 @@ inputs:
 runs:
   using: composite
   steps:
-    - id: tool-versions-elixir
-      name: Reading Elixir version from .tool-versions
-      uses: straw-hat-team/github-actions-workflows/asdf/get-version@testing-elixir
+    - name: Setup Elixir
+      uses: straw-hat-team/github-actions-workflows/elixir/setup@testing-elixir
       with:
-        plugin-name: elixir
-      if: ${{ ! inputs.elixir-version }}
-
-    - id: tool-versions-erlang
-      name: Reading Erlang version from .tool-versions
-      uses: straw-hat-team/github-actions-workflows/asdf/get-version@testing-elixir
-      with:
-        plugin-name: erlang
-      if: ${{ ! inputs.otp-version }}
-
-    - name: Set up Elixir
-      uses: erlef/setup-beam@v1
-      with:
-        elixir-version: ${{ inputs.elixir-version || steps.tool-versions-elixir.outputs.plugin-version }}
-        otp-version: ${{ inputs.otp-version || steps.tool-versions-erlang.outputs.plugin-version }}
-    - name: Restore dependencies cache
-      uses: actions/cache@v2
-      with:
-        path: deps
-        key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
-        restore-keys: ${{ runner.os }}-mix-
-    - name: Install dependencies
-      shell: sh
-      run: |
-        mix local.rebar --force
-        mix local.hex --force
-        mix deps.get
+        elixir-version: ${{ inputs.elixir-version }}
+        otp-version: ${{ inputs.otp-version }}
     - name: Run Linter
       shell: sh
       run: mix credo

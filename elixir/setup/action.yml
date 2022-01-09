@@ -1,0 +1,48 @@
+name: Elixir Setup
+description: Set up the Elixir environment.
+author: Straw Hat Team
+
+inputs:
+  elixir-version:
+    description: The Elixir version. It fallsback to .tool-versions if not specified.
+    required: false
+  otp-version:
+    description: The Erlang version. It fallsback to .tool-versions if not specified.
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - id: tool-versions-elixir
+      name: Reading Elixir version from .tool-versions
+      uses: straw-hat-team/github-actions-workflows/asdf/get-version@testing-elixir
+      with:
+        plugin-name: elixir
+      if: ${{ ! inputs.elixir-version }}
+
+    - id: tool-versions-erlang
+      name: Reading Erlang version from .tool-versions
+      uses: straw-hat-team/github-actions-workflows/asdf/get-version@testing-elixir
+      with:
+        plugin-name: erlang
+      if: ${{ ! inputs.otp-version }}
+
+    - name: Set up Elixir
+      uses: erlef/setup-beam@v1
+      with:
+        elixir-version: ${{ inputs.elixir-version || steps.tool-versions-elixir.outputs.plugin-version }}
+        otp-version: ${{ inputs.otp-version || steps.tool-versions-erlang.outputs.plugin-version }}
+
+    - name: Restore dependencies cache
+      uses: actions/cache@v2
+      with:
+        path: deps
+        key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-mix-
+
+    - name: Install dependencies
+      shell: sh
+      run: |
+        mix local.rebar --force
+        mix local.hex --force
+        mix deps.get
