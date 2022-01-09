@@ -27,7 +27,7 @@ runs:
           echo "\033[0;31m'${{ inputs.plugin-name }}' plugin not found in .tool-versions file"
           exit 1
         fi
-        echo $ASDF_PLUGIN_VERSION
+        echo "::set-output name=plugin-version::$ASDF_PLUGIN_VERSION"
 
 #    - shell: sh
 #      run: |
