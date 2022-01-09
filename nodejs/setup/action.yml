@@ -4,7 +4,7 @@ author: Straw Hat Team
 
 inputs:
   nodejs-version:
-    description: The NodeJS version. It fallsback to .tool-versions if not specified.
+    description: The NodeJS version. It fallsback to .tool-versions if not specified
     required: false
 
 runs:
@@ -13,7 +13,7 @@ runs:
     - id: tool-versions-nodejs
       name: Reading NodeJS version from .tool-versions
       if: ${{ ! inputs.nodejs-version }}
-      uses: straw-hat-team/github-actions-workflows/asdf/get-version@testing-elixir
+      uses: straw-hat-team/github-actions-workflows/asdf/get-version@v1.2.0
       with:
         plugin-name: nodejs
 

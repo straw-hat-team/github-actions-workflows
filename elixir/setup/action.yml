@@ -1,13 +1,13 @@
 name: Elixir Setup
-description: Set up the Elixir environment.
+description: Set up the Elixir environment
 author: Straw Hat Team
 
 inputs:
   elixir-version:
-    description: The Elixir version. It fallsback to .tool-versions if not specified.
+    description: The Elixir version. It fallsback to .tool-versions if not specified
     required: false
   otp-version:
-    description: The Erlang version. It fallsback to .tool-versions if not specified.
+    description: The Erlang version. It fallsback to .tool-versions if not specified
     required: false
 
 runs:
@@ -15,14 +15,14 @@ runs:
   steps:
     - name: Reading Elixir version from .tool-versions
       id: tool-versions-elixir
-      uses: straw-hat-team/github-actions-workflows/asdf/get-version@testing-elixir
+      uses: straw-hat-team/github-actions-workflows/asdf/get-version@v1.2.0
       with:
         plugin-name: elixir
       if: ${{ ! inputs.elixir-version }}
 
     - name: Reading Erlang version from .tool-versions
       id: tool-versions-erlang
-      uses: straw-hat-team/github-actions-workflows/asdf/get-version@testing-elixir
+      uses: straw-hat-team/github-actions-workflows/asdf/get-version@v1.2.0
       with:
         plugin-name: erlang
       if: ${{ ! inputs.otp-version }}

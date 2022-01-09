@@ -4,17 +4,17 @@ author: Straw Hat Team
 
 inputs:
   elixir-version:
-    description: The Elixir version
+    description: The Elixir version. It fallsback to .tool-versions if not specified
     required: false
   otp-version:
-    description: The Erlang version
+    description: The Erlang version. It fallsback to .tool-versions if not specified
     required: false
 
 runs:
   using: composite
   steps:
     - name: Setup Elixir
-      uses: straw-hat-team/github-actions-workflows/elixir/setup@testing-elixir
+      uses: straw-hat-team/github-actions-workflows/elixir/setup@v1.2.0
       with:
         elixir-version: ${{ inputs.elixir-version }}
         otp-version: ${{ inputs.otp-version }}

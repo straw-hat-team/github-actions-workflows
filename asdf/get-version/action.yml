@@ -15,7 +15,8 @@ outputs:
 runs:
   using: composite
   steps:
-    - id: get-version
+    - name: Get the version of the plugin from .tool-versions file
+      id: get-version
       shell: sh
       run: |
         if [ ! -f .tool-versions ]; then

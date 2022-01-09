@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: straw-hat-team/github-actions-workflows/nodejs/asdf@v1.1.1
+      - uses: straw-hat-team/github-actions-workflows/nodejs/setup@v1.1.1
       - uses: straw-hat-team/github-actions-workflows/nodejs/jest@v1.1.1
 
   prettier:
@@ -28,5 +28,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: straw-hat-team/github-actions-workflows/nodejs/asdf@v1.1.1
+      - uses: straw-hat-team/github-actions-workflows/nodejs/setup@v1.1.1
       - uses: straw-hat-team/github-actions-workflows/nodejs/prettier@v1.1.1
