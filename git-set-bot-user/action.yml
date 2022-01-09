@@ -1,0 +1,18 @@
+name: "Set Bot User"
+description: "Set the git bot user for the repository"
+
+inputs:
+  default-branch:
+    description: 'The default git branch for the repository'
+    required: false
+    default: 'master'
+
+runs:
+  using: composite
+  steps:
+    - name: Set Git User
+      shell: bash
+      run: |
+        git config --global user.name sht-bot
+        git config --global user.email opensource+sht-bot@straw-hat-llc.com
+        git config --global init.defaultBranch ${{ inputs.default-branch }}
