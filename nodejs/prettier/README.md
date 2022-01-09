@@ -9,7 +9,8 @@ errors.
 
 ### Get Started
 
-1. Add the job to your workflow:
+1. Make sure `actions/checkout` action is used before this action.
+2. Add the action to your job in your workflow, here is a final example:
 
 ```yml
 #...

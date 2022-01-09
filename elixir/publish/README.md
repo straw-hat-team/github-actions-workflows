@@ -6,14 +6,17 @@ Publish an Elixir package to Hex.pm.
 
 ## How-to Guides
 
-### Get Started
+## Add a HEX API Key to GitHub Secrets
 
 1. Create a [Hex](https://hex.pm) API Key following [Publishing from CI](https://hex.pm/docs/publish#publishing-from-ci).
-
 2. Add the Hex API Key to [GitHub Encrypted Secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-named `HEX_API_KEY` (or whichever name you prefer).
+   named `HEX_API_KEY` (or whichever name you prefer, but stick to the convention if possible).
 
-3. Add the job to your workflow:
+### Get Started
+
+1. Complete [Add a HEX API Key to GitHub Secrets](#add-a-hex-api-key-to-github-secrets) if required.
+2. Make sure `actions/checkout` action is used before this action.
+3. Add the action to your job in your workflow, here is a final example:
 
   ```yml
   #...

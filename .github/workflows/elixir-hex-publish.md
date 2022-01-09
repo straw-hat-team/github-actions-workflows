@@ -1,22 +1,21 @@
 # Elixir Hex Publish
 
-Publish Elixir packages to https://hex.pm/.
+Publish Elixir packages to https://hex.pm/. Uses the [elixir/publish](../../elixir/publish/README.md) Action.
 
-## Usage
+## How-to Guides
 
-Create a [Hex](https://hex.pm) API Key following [Publishing from CI](https://hex.pm/docs/publish#publishing-from-ci).
+### Get Started
 
-Add the Hex API Key to [GitHub Encrypted Secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-named `HEX_API_KEY`.
-
-Create a new GitHub Workflow (ex: `.github/workflows/cd.yml`) with the following content:
+1. Complete [Add a HEX API Key to GitHub Secrets](../../elixir/publish/README.md#add-a-hex-api-key-to-github-secrets) if
+   required from [elixir/publish](../../elixir/publish/README.md).
+2. Create a new GitHub Workflow (ex: `.github/workflows/cd.yml`) with the following job:
 
 ```yaml
 name: Hex Publish
 
 on:
   release:
-    types: [published]
+    types: [ published ]
 
 jobs:
   publish-to-hex-pm:
