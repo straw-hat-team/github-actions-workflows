@@ -31,6 +31,19 @@ on:
         default: true
 
 jobs:
+  echo-version:
+    name: Echo Elixir Version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: straw-hat-team/github-actions-workflows/asdf/get-version@testing-elixir
+        id: elixir-version
+        with:
+          plugin-name: elixir
+      - shell: sh
+        run: |
+          echo ${{ join(steps.elixir-version.outputs.*, '\n') }}
+
   test:
     name: Test
     if: ${{ inputs.testing-enabled }}
