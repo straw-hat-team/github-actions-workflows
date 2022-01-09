@@ -9,7 +9,7 @@ Set the `Node.js` version using the `.tool-versions` file managed by [asdf](http
 ### Get Started
 
 1. Make sure `actions/checkout` action is used before this action.
-2. Add the action to your job in your workflow, here is a final example:
+2. Add this action to your job in your workflow, here is an example:
 
 ```yml
 #...

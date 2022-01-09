@@ -16,7 +16,7 @@ Publish an Elixir package to Hex.pm.
 
 1. Complete [Add a HEX API Key to GitHub Secrets](#add-a-hex-api-key-to-github-secrets) if required.
 2. Make sure `actions/checkout` action is used before this action.
-3. Add the action to your job in your workflow, here is a final example:
+3. Add this action to your job in your workflow, here is an example:
 
   ```yml
   #...
