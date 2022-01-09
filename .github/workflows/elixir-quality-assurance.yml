@@ -53,9 +53,9 @@ jobs:
       uses: actions/checkout@v2
     - name: Set up Elixir
       uses: erlef/setup-beam@v1
-#      with:
-#        elixir-version: ${{ inputs.elixir-version }}
-#        otp-version: ${{ inputs.otp-version }}
+      with:
+        elixir-version: ${{ inputs.elixir-version }}
+        otp-version: ${{ inputs.otp-version }}
     - name: Restore dependencies cache
       uses: actions/cache@v2
       with:
@@ -91,9 +91,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: straw-hat-team/github-actions-workflows/elixir/credo@testing-elixir
-      with:
-        elixir-version: ${{ inputs.elixir-version }}
-        otp-version: ${{ inputs.otp-version }}
+#      with:
+#        elixir-version: ${{ inputs.elixir-version }}
+#        otp-version: ${{ inputs.otp-version }}
 
   dialyzer:
     name: Dialyzer
