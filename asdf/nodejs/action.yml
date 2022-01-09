@@ -1,6 +1,6 @@
-name: "Setup Node.js from .tool-versions"
-description: "Set the Node.js version using the .tool-versions managed by asdf"
-author: 'Straw Hat Team'
+name: Setup Node.js from .tool-versions"
+description: Set the Node.js version using the .tool-versions managed by asdf
+author: Straw Hat Team
 
 runs:
   using: composite
