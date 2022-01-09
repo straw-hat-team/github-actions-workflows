@@ -1,6 +1,6 @@
-# NodeJS ASDF
+# NodeJS Setup
 
-Set the `Node.js` version using the `.tool-versions` file managed by [asdf](https://asdf-vm.com/).
+Set the `Node.js` version.
 
 - [How-to Guides](#how-to-guides)
 
@@ -19,5 +19,7 @@ Set the `Node.js` version using the `.tool-versions` file managed by [asdf](http
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v2 # checkout the repository first
-          - uses: straw-hat-team/github-actions-workflows/nodejs/asdf@master
+          - uses: straw-hat-team/github-actions-workflows/nodejs/setup@master
+            with:
+              nodejs-version: 12.x # optional, fallback to use .tool-versions  
     ```

@@ -2,12 +2,6 @@ name: Git Set SHT Bot User
 description: Set the git user for the repository using Straw Hat Team bot account
 author: Straw Hat Team
 
-inputs:
-  default-branch:
-    description: The default git branch for the repository
-    required: false
-    default: master
-
 runs:
   using: composite
   steps:

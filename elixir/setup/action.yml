@@ -13,15 +13,15 @@ inputs:
 runs:
   using: composite
   steps:
-    - id: tool-versions-elixir
-      name: Reading Elixir version from .tool-versions
+    - name: Reading Elixir version from .tool-versions
+      id: tool-versions-elixir
       uses: straw-hat-team/github-actions-workflows/asdf/get-version@testing-elixir
       with:
         plugin-name: elixir
       if: ${{ ! inputs.elixir-version }}
 
-    - id: tool-versions-erlang
-      name: Reading Erlang version from .tool-versions
+    - name: Reading Erlang version from .tool-versions
+      id: tool-versions-erlang
       uses: straw-hat-team/github-actions-workflows/asdf/get-version@testing-elixir
       with:
         plugin-name: erlang
