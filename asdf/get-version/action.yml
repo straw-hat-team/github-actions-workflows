@@ -1,0 +1,31 @@
+name: ASDF Get Version
+description: Returns the version of the plugin from .tool-versions file managed by asdf
+author: Straw Hat Team
+
+inputs:
+  plugin-name:
+    description: The name of the plugin you want to get the version of
+    required: true
+
+outputs:
+  plugin-version:
+    description: "The version of the plugin"
+    value: ${{ steps.get-version.outputs.plugin-version }}
+
+runs:
+  using: composite
+  steps:
+    - name: Get the version of the plugin from .tool-versions file
+      id: get-version
+      shell: sh
+      run: |
+        if [ ! -f .tool-versions ]; then
+          echo "\033[0;31m.tool-versions file not found"
+          exit 1
+        fi
+        ASDF_PLUGIN_VERSION=$(awk '/${{ inputs.plugin-name }}/ { print $2 }' .tool-versions)
+        if [ -z "$ASDF_PLUGIN_VERSION" ]; then
+          echo "\033[0;31m'${{ inputs.plugin-name }}' plugin not found in .tool-versions file"
+          exit 1
+        fi
+        echo "::set-output name=plugin-version::$ASDF_PLUGIN_VERSION"

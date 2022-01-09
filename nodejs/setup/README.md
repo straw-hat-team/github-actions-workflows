@@ -1,6 +1,6 @@
-# NodeJS Jest
+# NodeJS Setup
 
-Runs [jest](https://jestjs.io/) runner.
+Set up NodeJS, use `.tool-versions` file as a fallback for the version.
 
 - [How-to Guides](#how-to-guides)
 
@@ -14,10 +14,12 @@ Runs [jest](https://jestjs.io/) runner.
     ```yml
     #...
     jobs:
-      check-format:
-        name: Check Format
+      something:
+        name: Setup NodeJS
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v2 # checkout the repository first
-          - uses: straw-hat-team/github-actions-workflows/nodejs/jest@master
+          - uses: straw-hat-team/github-actions-workflows/nodejs/setup@master
+            with:
+              nodejs-version: 12.x # optional, fallback to use .tool-versions  
     ```

@@ -1,0 +1,25 @@
+name: Setup Node.js from .tool-versions
+description: Set the Node.js version using the .tool-versions managed by asdf
+author: Straw Hat Team
+
+inputs:
+  nodejs-version:
+    description: The NodeJS version. It fallsback to .tool-versions if not specified
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - id: tool-versions-nodejs
+      name: Reading NodeJS version from .tool-versions
+      if: ${{ ! inputs.nodejs-version }}
+      uses: straw-hat-team/github-actions-workflows/asdf/get-version@v1.3.0
+      with:
+        plugin-name: nodejs
+
+    - name: Using Node.js@${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+      env:
+        NODE_VERSION: ${{ inputs.nodejs-version || steps.tool-versions-nodejs.outputs.plugin-version }}
