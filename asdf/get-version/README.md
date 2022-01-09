@@ -20,7 +20,10 @@ Returns the version of the plugin from .tool-versions file managed by asdf.
         steps:
           - uses: actions/checkout@v2 # checkout the repository first
           - uses: straw-hat-team/github-actions-workflows/asdf/git-version@master
-            id: node-version
+            id: nodejs-version
             with:
               plugin-name: nodejs
+          - shell: sh
+            run: |
+              echo ${{ steps.nodejs-version.outputs.plugin-version }}
     ```

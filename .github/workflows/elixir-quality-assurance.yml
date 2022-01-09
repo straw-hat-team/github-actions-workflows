@@ -42,7 +42,7 @@ jobs:
           plugin-name: elixir
       - shell: sh
         run: |
-          echo ${{ join(steps.elixir-version.outputs.*, '\n') }}
+          echo ${{ steps.elixir-version.outputs.plugin-version }}
 
   test:
     name: Test
