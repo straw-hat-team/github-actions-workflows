@@ -4,11 +4,11 @@ on:
       elixir-version:
         description: The Elixir version
         type: string
-        required: true
+        required: false
       otp-version:
         description: The Erlang version
         type: string
-        required: true
+        required: false
       testing-enabled:
         description: Enables the testing job
         type: boolean
