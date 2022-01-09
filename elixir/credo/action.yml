@@ -19,6 +19,7 @@ runs:
       with:
         plugin-name: elixir
       if: ${{ ! inputs.elixir-version }}
+
     - id: tool-versions-erlang
       name: Reading Erlang version from .tool-versions
       uses: straw-hat-team/github-actions-workflows/asdf/get-version@testing-elixir
