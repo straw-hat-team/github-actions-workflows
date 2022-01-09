@@ -1,0 +1,20 @@
+name: ASDF Get Version
+description: Returns the version of the plugin from .tool-versions file managed by asdf
+author: Straw Hat Team
+
+inputs:
+  plugin-name:
+    description: The name of the plugin you want to get the version of
+    required: true
+
+outputs:
+  plugin-version:
+    description: "The version of the plugin"
+    value: ${{ steps.get-version.outputs.plugin-version }}
+
+runs:
+  using: composite
+  steps:
+    - id: get-version
+      run: echo "::set-output name=plugin-version::$(cat .tool-versions | grep ${{ inputs.plugin-name }} | cut -d' ' -f2)"
+      shell: bash
