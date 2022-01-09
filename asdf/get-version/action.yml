@@ -20,6 +20,6 @@ runs:
       run: echo "::set-output name=plugin-version::$(cat .tool-versions | grep ${{ inputs.plugin-name }} | cut -d' ' -f2)"
     - shell: sh
       run: |
-        echo "${{ inputs.plugin-name }} version not found. Make sure that .tool-versions exists and ${{ inputs.plugin-name }} version is specified in it"
+        echo -e "\033[0;31m${{ inputs.plugin-name }} version not found. Make sure that .tool-versions exists and ${{ inputs.plugin-name }} version is specified in it"
         exit 1
       if: ${{ steps.get-version.outputs.plugin-version }} == ""
