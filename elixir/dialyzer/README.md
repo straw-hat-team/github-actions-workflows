@@ -1,34 +1,111 @@
 # Elixir Dialyzer
 
-Publish an Elixir package to Hex.pm.
+Runs [Dialyxir](https://github.com/jeremyjh/dialyxir) in your project.
 
 - [How-to Guides](#how-to-guides)
 
 ## How-to Guides
 
-## Add a HEX API Key to GitHub Secrets
-
-1. Create a [Hex](https://hex.pm) API Key following [Publishing from CI](https://hex.pm/docs/publish#publishing-from-ci).
-2. Add the Hex API Key to [GitHub Encrypted Secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-   named `HEX_API_KEY` (or whichever name you prefer, but stick to the convention if possible).
-
 ### Get Started
 
-1. Complete [Add a HEX API Key to GitHub Secrets](#add-a-hex-api-key-to-github-secrets) if required.
+1. Complete [Setup Dialyxir in your project](#setup-dialyxir-in-your-project).
 2. Make sure `actions/checkout` action is used before this action.
 3. Add this action to your job in your workflow, here is an example:
 
-  ```yml
-  #...
-  jobs:
-    publish:
-      name: Publish to Hex.pm
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2 # checkout the repository first
-        - uses: straw-hat-team/github-actions-workflows/elixir/publish@master
-          with:
-            elixir-version: '1.11'
-            otp-version: '22.3'
-            hex-api-key: ${{ secrets.HEX_API_KEY }} # (see step 2)
-  ```
+    ```yaml
+    #...
+    jobs:
+      publish:
+        name: Publish to Hex.pm
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2 # checkout the repository first
+          - uses: straw-hat-team/github-actions-workflows/elixir/publish@master
+            with:
+              elixir-version: '1.11'
+              otp-version: '22.3'
+              hex-api-key: ${{ secrets.HEX_API_KEY }} # (see step 2)
+    ```
+
+### Setup Dialyxir in your project
+
+1. Ensure that [Dialyxir](https://github.com/jeremyjh/dialyxir) dependency is preset in your project. Check
+   your `mix.exs` file.
+
+    ```elixir
+    defmodule MyLibrary.MixProject do
+      use Mix.Project
+    
+      def project do
+        [
+          # ...
+          deps: deps()
+        ]
+      end
+    
+      defp deps do
+        [
+          # ... here, is an example of how to add it
+          {:dialyxir, ">= 0.0.0", only: [:dev], runtime: false}
+        ]
+      end
+    end
+    ```
+
+2. In your `mix.exs`, you must configure Dialyzer with the following settings:
+
+    ```elixir
+    defmodule MyLibrary.MixProject do
+      use Mix.Project
+    
+      def project do
+        [
+          # ...
+          dialyzer: [
+            # ... other dialyzer settings
+            plt_core_path: "priv/plts", # must be this
+            plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+            # must be this
+          ]
+        ]
+      end
+    end
+    ```
+
+3. Make sure that `priv/plts` directory exists before running Dialyzer. Create a file called `priv/plts/.gitkeep` and
+   commit the file as part of your repository to make sure the directory exists at all time.
+
+    ```shell
+    # Creates priv/plts directory if it doesn't exists
+    mkdir -p priv/plts
+    # Create an empty file
+    touch priv/plts/.gitkeep
+    ```
+
+4. You probably do not want to commit the `plts` files therefore add the following content to your `.gitignore` file:
+
+    ```.gitignore
+    /priv/plts/*.plt
+    /priv/plts/*.plt.hash
+    ```
+
+### Fix No such file, directory or application error
+
+If you see the following error:
+
+```log
+:dialyzer.run error: No such file, directory or application: ".../_build/dev/dialyxir_erlang-..._elixir-..._deps-dev.plt"
+```
+
+1. Verify the Dialyzer configuration. Follow [Setup Dialyxir in your project](#setup-dialyxir-in-your-project) guide.
+
+### Fix The task "dialyzer" could not be found error
+
+If you see the following error:
+
+```log
+** (Mix) The task "dialyzer" could not be found
+```
+
+1. Verify that `dialyzer` dependency was added correctly.
+   Follow [Setup Dialyxir in your project](#setup-dialyxir-in-your-project) guide.

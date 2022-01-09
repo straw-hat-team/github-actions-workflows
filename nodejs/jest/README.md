@@ -11,13 +11,13 @@ Runs [jest](https://jestjs.io/) testing.
 1. Make sure `actions/checkout` action is used before this action.
 2. Add this action to your job in your workflow, here is an example:
 
-```yml
-#...
-jobs:
-  check-format:
-    name: Check Format
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2 # checkout the repository first
-      - uses: straw-hat-team/github-actions-workflows/nodejs/jest@master
-```
+    ```yml
+    #...
+    jobs:
+      check-format:
+        name: Check Format
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2 # checkout the repository first
+          - uses: straw-hat-team/github-actions-workflows/nodejs/jest@master
+    ```
