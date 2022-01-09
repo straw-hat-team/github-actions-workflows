@@ -18,9 +18,16 @@ runs:
     - id: get-version
       shell: sh
       run: |
-        echo ::set-output name=plugin-version::$(awk '/${{ inputs.plugin-name }}/ { print $2 }' .tool-versions)
-    - shell: sh
-      run: |
-        echo "\033[0;31m'${{ inputs.plugin-name }}' version not found. Make sure that .tool-versions exists and '${{ inputs.plugin-name }}' version is specified in it"
-        exit 1
-      if: ${{ steps.get-version.outputs.plugin-version }} == ""
+        if [ ! -f .tool-versions ]; then
+          echo "\033[0;31m.tool-versions file not found"
+          exit 1
+        fi
+
+        ASDF_PLUGIN_VERSION=awk '/${{ inputs.plugin-name }}/ { print $2 }' .tool-versions
+        echo $ASDF_PLUGIN_VERSION
+
+#    - shell: sh
+#      run: |
+#        echo "\033[0;31m'${{ inputs.plugin-name }}' version not found. Make sure that .tool-versions exists and '${{ inputs.plugin-name }}' version is specified in it"
+#        exit 1
+#      if: ${{ steps.get-version.outputs.plugin-version }} == ""
