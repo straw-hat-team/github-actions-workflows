@@ -84,16 +84,16 @@ jobs:
 #    - name: Run Formatter
 #      run: mix format --check-formatted
 
-#  credo:
-#    name: Credo
-#    if: ${{ inputs.credo-enabled }}
-#    runs-on: ubuntu-latest
-#    steps:
-#    - uses: actions/checkout@v2
-#    - uses: straw-hat-team/github-actions-workflows/elixir/credo@testing-elixir
-#      with:
-#        elixir-version: ${{ inputs.elixir-version }}
-#        otp-version: ${{ inputs.otp-version }}
+  credo:
+    name: Credo
+    if: ${{ inputs.credo-enabled }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: straw-hat-team/github-actions-workflows/elixir/credo@testing-elixir
+      with:
+        elixir-version: ${{ inputs.elixir-version }}
+        otp-version: ${{ inputs.otp-version }}
 
 #  dialyzer:
 #    name: Dialyzer
