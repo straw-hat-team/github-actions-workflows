@@ -16,4 +16,3 @@ runs:
       run: |
         git config --global user.name sht-bot
         git config --global user.email opensource+sht-bot@straw-hat-llc.com
-        git config --global init.defaultBranch ${{ inputs.default-branch }}

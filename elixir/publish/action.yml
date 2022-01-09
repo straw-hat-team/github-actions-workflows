@@ -1,6 +1,6 @@
-name: "Elixir Publish"
-description: "Publish an Elixir package to Hex.pm"
-author: 'Straw Hat Team'
+name: Elixir Publish
+description: Publish an Elixir package to Hex.pm
+author: Straw Hat Team
 
 inputs:
   elixir-version:

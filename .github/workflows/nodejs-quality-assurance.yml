@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: straw-hat-team/github-actions-workflows/setup-nodejs-from-tool-versions@master
+      - uses: straw-hat-team/github-actions-workflows/asdf/nodejs@testing-jobs
       - run: yarn install --immutable
       - run: yarn jest --ci --coverage
         env:

@@ -4,9 +4,11 @@ A set of GitHub Actions Workflow Templates.
 
 ## Actions
 
-- [Git Set SHT Bot User](./git-set-sht-bot-user/README.md): set the Straw Hat Team Bot Git user.
-- [Setup NodeJS from .tool-versions](./setup-nodejs-from-tool-versions/README.md): setup NodeJS from the .tool-versions
-  file.
+- [git/set-sht-bot-user](git/set-sht-bot-user/README.md): set the Straw Hat Team Bot Git user.
+- [asdf/nodejs](asdf/nodejs/README.md): setup NodeJS from the .tool-versions file.
+- [elixir/publish](./elixir/publish/README.md): publish a release to Hex.
+
+### Workflow Templates
 
 ## Workflows Templates
 
