@@ -18,6 +18,7 @@ runs:
     - id: get-version
       shell: sh
       run:
+        echo $(cat .tool-versions)
         echo "::set-output name=plugin-version::$(cat .tool-versions | grep ${{ inputs.plugin-name }} | cut -d' ' -f2)"
     - shell: sh
       run: |
