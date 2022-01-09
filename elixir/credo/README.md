@@ -47,3 +47,13 @@ Runs [Dialyxir](https://github.com/jeremyjh/dialyxir) in your project.
               elixir-version: '1.11'
               otp-version: '22.3'
     ```
+
+### Fix credo could not be found error
+
+If you see the following error:
+
+```log
+** (Mix) The task "credo" could not be found
+```
+
+1. Verify that `credo` dependency was added correctly as a dependency.

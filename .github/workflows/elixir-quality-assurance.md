@@ -48,13 +48,3 @@ jobs:
       credo-enabled: true
       dialyzer-enabled: true
 ```
-
-## Troubleshooting
-
-### Credo
-
-```log
-** (Mix) The task "credo" could not be found
-```
-
-Verify that `credo` dependency was added correctly.
