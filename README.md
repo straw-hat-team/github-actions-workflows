@@ -2,7 +2,11 @@
 
 A set of GitHub Actions Workflow Templates.
 
-## Actions
+- [References](#references)
+
+## References
+
+### Actions
 
 - [git/set-sht-bot-user](git/set-sht-bot-user/README.md): set the Straw Hat Team Bot Git user.
 - [elixir/publish](./elixir/publish/README.md): publish a release to Hex.
@@ -10,13 +14,6 @@ A set of GitHub Actions Workflow Templates.
 - [nodejs/prettier](./nodejs/prettier/README.md): runs prettier check on all files.
 - [nodejs/jest](./nodejs/jest/README.md): runs jest runner in the project.
 
-## Workflows Templates
+### Workflows Templates
 
-### Elixir-Lang
-
-- [Elixir Hex Publish](.github/workflows/elixir-hex-publish.md): publish Elixir packages to https://hex.pm/.
-- [Elixir Quality Assurance](.github/workflows/elixir-quality-assurance.md): enables Quality Assurance tools.
-
-### NodeJS
-
-- [NodeJS Quality Assurance](.github/workflows/nodejs-quality-assurance.md): enables Quality Assurance tools.
+- [Workflows Templates](./.github/workflows/README.md)
