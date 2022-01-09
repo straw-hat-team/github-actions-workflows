@@ -35,6 +35,6 @@ runs:
         mix deps.get
     - name: Run Hex Publish
       shell: sh
-      run: mix hex.publish --yes
+      run: mix hex.publish --yes --dry-run
       env:
         HEX_API_KEY: ${{ inputs.hex-api-key }}
