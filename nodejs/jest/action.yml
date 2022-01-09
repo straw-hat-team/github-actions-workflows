@@ -8,6 +8,6 @@ runs:
     - shell: sh
       run: yarn install --immutable
     - shell: sh
-    - run: yarn jest --ci --coverage
+      run: yarn jest --ci --coverage
       env:
         CI: true
