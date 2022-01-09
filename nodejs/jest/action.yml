@@ -10,4 +10,4 @@ runs:
     - shell: sh
       run: yarn jest --ci --coverage
       env:
-        CI: true
+        CI: 'true'
