@@ -16,20 +16,19 @@ Runs [Dialyxir](https://github.com/jeremyjh/dialyxir) in your project.
     #...
     jobs:
       publish:
-        name: Publish to Hex.pm
+        name: Run Dialyzer
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v2 # checkout the repository first
-          - uses: straw-hat-team/github-actions-workflows/elixir/publish@master
+          - uses: straw-hat-team/github-actions-workflows/elixir/dialyzer@master
             with:
               elixir-version: '1.11'
               otp-version: '22.3'
-              hex-api-key: ${{ secrets.HEX_API_KEY }} # (see step 2)
     ```
 
 ### Setup Dialyxir in your project
 
-1. Ensure that [Dialyxir](https://github.com/jeremyjh/dialyxir) dependency is preset in your project. Check
+1. Ensure that [Dialyxir](https://github.com/jeremyjh/dialyxir) dependency is present in your project. Check
    your `mix.exs` file.
 
     ```elixir
@@ -107,5 +106,5 @@ If you see the following error:
 ** (Mix) The task "dialyzer" could not be found
 ```
 
-1. Verify that `dialyzer` dependency was added correctly.
+1. Verify that `dialyxir` dependency was added correctly.
    Follow [Setup Dialyxir in your project](#setup-dialyxir-in-your-project) guide.
