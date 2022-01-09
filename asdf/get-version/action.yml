@@ -23,7 +23,7 @@ runs:
           exit 1
         fi
         ASDF_PLUGIN_VERSION=$(awk '/${{ inputs.plugin-name }}/ { print $2 }' .tool-versions)
-        if [ -z "$ASDF_PLUGIN_VERSION" ] then
+        if [ -z "$ASDF_PLUGIN_VERSION" ]; then
           echo "\033[0;31m'${{ inputs.plugin-name }}' plugin not found in .tool-versions file"
           exit 1
         fi
