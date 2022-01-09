@@ -4,11 +4,11 @@ on:
       elixir-version:
         description: The Elixir version
         type: string
-        required: true
+        required: false
       otp-version:
         description: The Erlang version
         type: string
-        required: true
+        required: false
     secrets:
       HEX_API_KEY:
         description: The hex.pm API key

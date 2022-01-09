@@ -31,8 +31,8 @@ jobs:
   publish-to-hex-pm:
     uses: straw-hat-team/github-actions-workflows/.github/workflows/elixir-hex-publish.yml@master
     with:
-      elixir-version: '1.11'
-      otp-version: '22.3'
+      elixir-version: '1.11' # optional, fallback to use .tool-versions 
+      otp-version: '22.3' # optional, fallback to use .tool-versions
     secrets:
       HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
 ```
