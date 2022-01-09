@@ -24,4 +24,3 @@ jobs:
       with:
         elixir-version: ${{ inputs.elixir-version }}
         otp-version: ${{ inputs.otp-version }}
-        hex-api-key: ${{ secrets.HEX_API_KEY }}
