@@ -1,0 +1,16 @@
+name: "Setup Node.js from .tool-versions"
+description: "Set the Node.js version using the .tool-versions managed by asdf"
+author: 'Straw Hat Team'
+
+runs:
+  using: composite
+  steps:
+    - name: Determine Node Version
+      run: echo "ASDF_NODE_VERSION=$(cat .tool-versions | grep nodejs | cut -d' ' -f2)" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Using Node.js@${{ env.ASDF_NODE_VERSION }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ env.ASDF_NODE_VERSION }}
+

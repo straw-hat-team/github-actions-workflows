@@ -1,5 +1,6 @@
-name: "Set Bot User"
-description: "Set the git bot user for the repository"
+name: "Git Set SHT Bot User"
+description: "Set the git user for the repository using Straw Hat Team bot account"
+author: 'Straw Hat Team'
 
 inputs:
   default-branch:
