@@ -1,4 +1,4 @@
-# ASDF NodeJS
+# NodeJS ASDF
 
 Set the `Node.js` version using the `.tool-versions` file managed by [asdf](https://asdf-vm.com/).
 
@@ -18,5 +18,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2 # checkout the repository first
-      - uses: straw-hat-team/github-actions-workflows/asdf/nodejs@master
+      - uses: straw-hat-team/github-actions-workflows/nodejs/asdf@master
 ```
