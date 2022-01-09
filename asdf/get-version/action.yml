@@ -17,12 +17,8 @@ runs:
   steps:
     - id: get-version
       shell: sh
-      run:
-        echo $(awk '/elixir/ { print $2 }' .tool-versions)
-        echo ""
-        echo ""
-        echo ""
-        echo "::set-output name=plugin-version::$(awk '/elixir/ { print $2 }' .tool-versions)"
+      run: |
+        echo "::set-output name=plugin-version::$(awk '/${{ inputs.plugin-name }}/ { print $2 }' .tool-versions)"
     - shell: sh
       run: |
         echo "\033[0;31m'${{ inputs.plugin-name }}' version not found. Make sure that .tool-versions exists and '${{ inputs.plugin-name }}' version is specified in it"
