@@ -2,11 +2,11 @@ on:
   workflow_call:
     inputs:
       elixir-version:
-        description: The Elixir version
+        description: The Elixir version. It fallsback to .tool-versions if not specified
         type: string
         required: false
       otp-version:
-        description: The Erlang version
+        description: The Erlang version. It fallsback to .tool-versions if not specified
         type: string
         required: false
     secrets:

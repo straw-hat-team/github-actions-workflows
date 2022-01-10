@@ -22,8 +22,8 @@ Runs [Dialyxir](https://github.com/jeremyjh/dialyxir) in your project.
           - uses: actions/checkout@v2 # checkout the repository first
           - uses: straw-hat-team/github-actions-workflows/elixir/dialyzer@master
             with:
-              elixir-version: '1.11'
-              otp-version: '22.3'
+              elixir-version: '1.11' # optional, fallback to use .tool-versions
+              otp-version: '22.3' # optional, fallback to use .tool-versions
     ```
 
 ### Setup Dialyxir in your project

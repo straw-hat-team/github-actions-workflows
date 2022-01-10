@@ -28,7 +28,7 @@ Publish an Elixir package to Hex.pm.
           - uses: actions/checkout@v2 # checkout the repository first
           - uses: straw-hat-team/github-actions-workflows/elixir/publish@master
             with:
-              elixir-version: '1.11'
-              otp-version: '22.3'
+              elixir-version: '1.11' # optional, fallback to use .tool-versions
+              otp-version: '22.3' # optional, fallback to use .tool-versions
               hex-api-key: ${{ secrets.HEX_API_KEY }} # (see step 2)
     ```
