@@ -38,7 +38,7 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    - uses: straw-hat-team/github-actions-workflows/elixir/test@v1.2.0
+    - uses: straw-hat-team/github-actions-workflows/elixir/test@testing-elixir
       with:
         elixir-version: ${{ inputs.elixir-version }}
         otp-version: ${{ inputs.otp-version }}
@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: straw-hat-team/github-actions-workflows/elixir/format@v1.2.0
+    - uses: straw-hat-team/github-actions-workflows/elixir/format@testing-elixir
       with:
         elixir-version: ${{ inputs.elixir-version }}
         otp-version: ${{ inputs.otp-version }}
@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: straw-hat-team/github-actions-workflows/elixir/credo@v1.2.0
+    - uses: straw-hat-team/github-actions-workflows/elixir/credo@testing-elixir
       with:
         elixir-version: ${{ inputs.elixir-version }}
         otp-version: ${{ inputs.otp-version }}
@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: straw-hat-team/github-actions-workflows/elixir/dialyzer@v1.2.0
+      - uses: straw-hat-team/github-actions-workflows/elixir/dialyzer@testing-elixir
         with:
           elixir-version: ${{ inputs.elixir-version }}
           otp-version: ${{ inputs.otp-version }}
