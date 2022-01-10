@@ -31,19 +31,6 @@ on:
         default: true
 
 jobs:
-  echo-version:
-    name: Echo Elixir Version
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: straw-hat-team/github-actions-workflows/asdf/get-version@testing-elixir
-        id: elixir-version
-        with:
-          plugin-name: elixir
-      - shell: sh
-        run: |
-          echo ${{ steps.elixir-version.outputs.plugin-version }}
-
   test:
     name: Test
     if: ${{ inputs.testing-enabled }}
@@ -51,25 +38,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    - name: Set up Elixir
-      uses: erlef/setup-beam@v1
+    - uses: straw-hat-team/github-actions-workflows/elixir/test@v1.2.0
       with:
         elixir-version: ${{ inputs.elixir-version }}
         otp-version: ${{ inputs.otp-version }}
-    - name: Restore dependencies cache
-      uses: actions/cache@v2
-      with:
-        path: deps
-        key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
-        restore-keys: ${{ runner.os }}-mix-
-    - name: Install dependencies
-      run: |
-        mix local.rebar --force
-        mix local.hex --force
-        mix deps.get
-    - name: Run tests
-      run: mix test
-#
+
   format:
     name: Format
     if: ${{ inputs.formatter-enabled }}
