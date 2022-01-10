@@ -14,8 +14,8 @@ Runs the formatter check in your Elixir project.
     ```yaml
     #...
     jobs:
-      publish:
-        name: Run Credo
+      format:
+        name: Run Formatter
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v2 # checkout the repository first

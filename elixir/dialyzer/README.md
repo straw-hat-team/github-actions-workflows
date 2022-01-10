@@ -15,7 +15,7 @@ Runs [Dialyxir](https://github.com/jeremyjh/dialyxir) in your project.
     ```yaml
     #...
     jobs:
-      publish:
+      dialyzer:
         name: Run Dialyzer
         runs-on: ubuntu-latest
         steps:

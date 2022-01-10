@@ -1,5 +1,5 @@
-name: Elixir Credo
-description: Runs Credo lint in the Elixir project
+name: Elixir Format
+description: Runs formatter check
 author: Straw Hat Team
 
 inputs:

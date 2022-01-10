@@ -1,5 +1,5 @@
 name: Elixir Dialyzer
-description: Runs Dialyxir in your project
+description: Runs Dialyxir typespec analysis
 author: Straw Hat Team
 
 inputs:

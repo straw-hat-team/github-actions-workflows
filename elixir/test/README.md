@@ -1,6 +1,6 @@
-# Elixir Setup
+# Elixir Test
 
-Set up the Elixir project.
+Run the Elixir tests.
 
 - [How-to Guides](#how-to-guides)
 
@@ -14,13 +14,14 @@ Set up the Elixir project.
     ```yaml
     #...
     jobs:
-      setup:
-        name: Setup Elixir
+      tests:
+        name: Run Tests
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v2 # checkout the repository first
-          - uses: straw-hat-team/github-actions-workflows/elixir/setup@master
+          - uses: straw-hat-team/github-actions-workflows/elixir/test@master
             with:
               elixir-version: '1.11' # optional, fallback to use .tool-versions
               otp-version: '22.3' # optional, fallback to use .tool-versions
     ```
+

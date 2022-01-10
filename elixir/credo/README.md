@@ -37,7 +37,7 @@ Runs [Dialyxir](https://github.com/jeremyjh/dialyxir) in your project.
     ```yaml
     #...
     jobs:
-      publish:
+      credo:
         name: Run Credo
         runs-on: ubuntu-latest
         steps:
