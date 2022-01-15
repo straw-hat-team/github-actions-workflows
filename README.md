@@ -8,6 +8,8 @@ A set of GitHub Actions Workflow Templates.
 
 ### Actions
 
+- [semantic-pull-request](./semantic-pull-request/README.md): ensures that the Pull Request title matches Conventional Commits spec.
+
 #### asdf
 
 - [asdf/get-version](./asdf/get-version/README.md): return the version for a given asdf plugin.
