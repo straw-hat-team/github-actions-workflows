@@ -15,7 +15,6 @@ A set of GitHub Actions Workflow Templates.
 - [asdf/get-version](./asdf/get-version/README.md): return the version for a given asdf plugin.
 
 #### Elixir-Lang
-- 
 
 - [elixir/credo](./elixir/credo/README.md): runs Credo linter.
 - [elixir/dialyzer](./elixir/dialyzer/README.md): runs Dialyzer typespec check.
