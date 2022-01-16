@@ -6,6 +6,13 @@ inputs:
   github-token:
     description: The Github API token.
     required: true
+  require-scope:
+    description: Configure that a scope must always be provided.
+    required: false
+    default: 'false'
+  scopes:
+    description: Configure which scopes are allowed.
+    required: false
 
 runs:
   using: composite
@@ -26,7 +33,8 @@ runs:
           ci
           chore
           revert
-        requireScope: false
+        requireScope: ${{ inputs.require-scope }}
+        scopes: ${{ inputs.scopes }}
         subjectPattern: ^(?![A-Z]).+$
         subjectPatternError: |
           The subject "{subject}" found in the pull request title "{title}"
