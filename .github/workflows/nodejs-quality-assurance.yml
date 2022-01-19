@@ -1,10 +1,6 @@
 on:
   workflow_call:
     inputs:
-      sht-npm-token:
-        description: The Straw Hat NPM Token that may be injected into the .yarnrc.yml file
-        type: string
-        required: false
       jest-enabled:
         description: Enables the Jest testing job
         type: boolean
@@ -15,6 +11,10 @@ on:
         type: boolean
         required: false
         default: true
+    secrets:
+      SHT_NPM_TOKEN:
+        description: The Straw Hat NPM Token that may be injected into the .yarnrc.yml file
+        required: false
 
 jobs:
   jest:
@@ -27,7 +27,7 @@ jobs:
       - shell: sh
         run: yarn install --immutable
         env:
-          SHT_NPM_TOKEN: ${{ inputs.sht-npm-token }}
+          SHT_NPM_TOKEN: ${{ secrets.SHT_NPM_TOKEN }}
       - uses: straw-hat-team/github-actions-workflows/nodejs/jest@v1.3.0
 
   prettier:
@@ -40,5 +40,5 @@ jobs:
       - shell: sh
         run: yarn install --immutable
         env:
-          SHT_NPM_TOKEN: ${{ inputs.sht-npm-token }}
+          SHT_NPM_TOKEN: ${{ secrets.SHT_NPM_TOKEN }}
       - uses: straw-hat-team/github-actions-workflows/nodejs/prettier@v1.3.0
