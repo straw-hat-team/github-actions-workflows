@@ -6,7 +6,4 @@ runs:
   using: composite
   steps:
     - shell: sh
-      run: yarn install --immutable
-
-    - shell: sh
       run: yarn prettier --check */** --ignore-unknown --no-error-on-unmatched-pattern
