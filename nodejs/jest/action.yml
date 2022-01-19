@@ -2,10 +2,16 @@ name: NodeJS Jest
 description: Run the Jest runner
 author: Straw Hat Team
 
+inputs:
+  sht-npm-token:
+    description: The Straw Hat NPM Token that may be injected into the .yarnrc.yml file
+    required: false
+
 runs:
   using: composite
   steps:
     - shell: sh
       run: yarn jest --ci --coverage
       env:
+        SHT_NPM_TOKEN: ${{ inputs.sht-npm-token }}
         CI: 'true'

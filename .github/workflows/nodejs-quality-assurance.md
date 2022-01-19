@@ -41,4 +41,8 @@ jobs:
     with:
       jest-enabled: true
       prettier-enabled: true
+    secrets:
+      # optional, if you are using Yarn Berry .yarnrc.yml with ${SHT_NPM_TOKEN}
+      # in it for private publishing or pulling
+      SHT_NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 ```
