@@ -41,6 +41,7 @@ runs:
           RELEASE_TAG_PACKAGE_NAME="${BASH_REMATCH[1]}"
           RELEASE_TAG_PACKAGE_VERSION="${BASH_REMATCH[2]}"
 
+          echo "verifying $ROOT/apps/$RELEASE_TAG_PACKAGE_NAME directory exists"
           if [ -d "$ROOT/apps/$RELEASE_TAG_PACKAGE_NAME" ]; then
             cd "$ROOT/apps/$RELEASE_TAG_PACKAGE_NAME"
             CURRENT_PACKAGE_MIX_VERSION=$(mix run --no-compile --no-start -e 'Mix.Project.config() |> Keyword.get(:version) |> IO.puts()')
@@ -56,6 +57,6 @@ runs:
             exit 1
           fi
         else
-          echo "no package release found in the release tag: $REF_NAME; skipping"
+          echo "no package release found in the release tag: '$REF_NAME'. Skipping publishing."
           exit 0
         fi
