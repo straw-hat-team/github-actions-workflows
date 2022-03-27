@@ -4,7 +4,7 @@ author: Straw Hat Team
 
 inputs:
   nodejs-version:
-    description: The NodeJS version. It fallsback to .tool-versions if not specified
+    description: The NodeJS version. It fallback to .tool-versions if not specified
     required: false
 
 runs:

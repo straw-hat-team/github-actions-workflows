@@ -4,10 +4,10 @@ author: Straw Hat Team
 
 inputs:
   elixir-version:
-    description: The Elixir version. It fallsback to .tool-versions if not specified
+    description: The Elixir version. It fallback to .tool-versions if not specified
     required: false
   otp-version:
-    description: The Erlang version. It fallsback to .tool-versions if not specified
+    description: The Erlang version. It fallback to .tool-versions if not specified
     required: false
   hex-api-key:
     description: The hex.pm API key
