@@ -11,8 +11,8 @@ Publish an Elixir package to Hex.pm from an Umbrella app setup.
 
 `ref-name` configuration is used to identify which package you suppose to release. When the `ref-name` matches the
 following regex `^(.+)\@v([0-9]+\.[0-9]+\.[0-9])$` which is `[package-name]@v[version]`, the package will be published
-to Hex.pm if the such package exists under the umbrella setup, and the version matches the existing package version
-in the `mix.exs` file.
+to Hex.pm if the package exists under the umbrella setup, and the version matches the existing package version in
+the `mix.exs` file.
 
 For conveniently, the `ref-name` value could be read from `${{ github.ref_name }}` context when reacting to a release
 event.
@@ -47,4 +47,28 @@ event.
               otp-version: '22.3' # optional, fallback to use .tool-versions
               hex-api-key: ${{ secrets.HEX_API_KEY }} # (see step 2)
               ref-name: ${{ github.ref_name }} # the GitHub Release Tag Name with the format of "[package name]@v[version]"
+    ```
+
+### Fix ExDoc GitHub Linking
+
+1. Open the `mix.exs` file of the package you want to publish.
+2. Setup `source_url_pattern` of `docs` as follows:
+    
+    ```elixir
+    defmodule MyPkgName.MixProject do
+      use Mix.Project
+      
+      @app :my_pkg_name
+      @version "0.7.3"
+      @source_url "https://github.com/{owner}/{repo}"
+      
+      def project do
+        [
+          # ...
+          docs: [
+           source_url_pattern: "#{@source_url}/blob/#{@app}@v#{@version}/apps/#{@app}/%{path}#L%{line}"
+          ],
+        ]
+      end
+    end
     ```
