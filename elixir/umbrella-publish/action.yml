@@ -47,7 +47,7 @@ runs:
             CURRENT_PACKAGE_MIX_VERSION=$(mix run --no-compile --no-start -e 'Mix.Project.config() |> Keyword.get(:version) |> IO.puts()')
 
             if [ "$CURRENT_PACKAGE_MIX_VERSION" = "$RELEASE_TAG_PACKAGE_VERSION" ]; then
-              echo "mix hex.publish --yes"
+              mix hex.publish --yes
             else
               echo "\033[0;31m':$RELEASE_TAG_PACKAGE_NAME' package with '$CURRENT_PACKAGE_MIX_VERSION' version does not match the '$RELEASE_TAG_PACKAGE_VERSION' release tag version"
               exit 1
