@@ -8,7 +8,8 @@ A set of GitHub Actions Workflow Templates.
 
 ### Actions
 
-- [semantic-pull-request](./semantic-pull-request/README.md): ensures that the Pull Request title matches Conventional Commits spec.
+- [semantic-pull-request](./semantic-pull-request/README.md): ensures that the Pull Request title matches Conventional
+  Commits spec.
 
 #### asdf
 
@@ -22,6 +23,8 @@ A set of GitHub Actions Workflow Templates.
 - [elixir/publish](./elixir/publish/README.md): publish a release to Hex.
 - [elixir/setup](./elixir/setup/README.md): setup Elixir, use `.tool-versions` file as a fallback for the versions.
 - [elixir/test](./elixir/test/README.md): runs tests.
+- [elixir/umbrella-publish](./elixir/umbrella-publish/README.md): publish an Elixir package to Hex.pm from an Umbrella
+  app setup.
 
 #### Git
 
