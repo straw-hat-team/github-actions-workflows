@@ -31,7 +31,7 @@ runs:
     - name: Run Hex Publish
       env:
         HEX_API_KEY: ${{ inputs.hex-api-key }}
-      shell: sh
+      shell: bash
       run: |
         PACKAGE_RELEASE_REGEX="^(.+)\@v([0-9]+\.[0-9]+\.[0-9])$"
         REF_NAME="${{ inputs.ref-name }}"
