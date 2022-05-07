@@ -13,6 +13,7 @@ This workflow is a suit of development tool setup for Elixir projects that lever
 - [elixir/dialyzer](../../elixir/dialyzer/README.md) for typespec check.
 - [elixir/format](../../elixir/format/README.md) for formatting check.
 - [elixir/test](../../elixir/test/README.md) for testing check.
+- [elixir/compilation-warnings](../../elixir/compilation-warnings/README.md) for compilation warning check.
 
 You can disable these actions by changing the setting the workflow. Please check the workflow input documentation.
 
@@ -44,4 +45,5 @@ jobs:
       formatter-enabled: true
       credo-enabled: true
       dialyzer-enabled: true
+      compilation-warning-enabled: true
 ```
