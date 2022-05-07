@@ -17,6 +17,7 @@ A set of GitHub Actions Workflow Templates.
 
 #### Elixir-Lang
 
+- [elixir/compilation-warnings](./elixir/compilation-warnings/README.md): compiles the code treating warnings as errors.
 - [elixir/credo](./elixir/credo/README.md): runs Credo linter.
 - [elixir/dialyzer](./elixir/dialyzer/README.md): runs Dialyzer typespec check.
 - [elixir/format](./elixir/format/README.md): runs formatter.

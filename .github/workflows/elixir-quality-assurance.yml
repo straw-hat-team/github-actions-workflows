@@ -29,8 +29,25 @@ on:
         type: boolean
         required: false
         default: true
+      compilation-warning-enabled:
+        description: Enables the compilation warning checks job
+        type: boolean
+        required: false
+        default: true
 
 jobs:
+  compilation-warning:
+    name: Compilation Warnings
+    if: ${{ inputs.compilation-warning-enabled }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - uses: straw-hat-team/github-actions-workflows/elixir/compilation-warnings@v1.5.0
+        with:
+          elixir-version: ${{ inputs.elixir-version }}
+          otp-version: ${{ inputs.otp-version }}
+
   test:
     name: Test
     if: ${{ inputs.testing-enabled }}

@@ -1,0 +1,24 @@
+name: Elixir Compilation Warnings
+description: Checks for compilation warnings
+author: Straw Hat Team
+
+inputs:
+  elixir-version:
+    description: The Elixir version. It fallback to .tool-versions if not specified
+    required: false
+  otp-version:
+    description: The Erlang version. It fallback to .tool-versions if not specified
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Elixir
+      uses: straw-hat-team/github-actions-workflows/elixir/setup@v1.3.0
+      with:
+        elixir-version: ${{ inputs.elixir-version }}
+        otp-version: ${{ inputs.otp-version }}
+
+    - name: Run compilation
+      shell: sh
+      run: mix compile --warnings-as-errors --force
