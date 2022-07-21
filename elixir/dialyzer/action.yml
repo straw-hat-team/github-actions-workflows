@@ -37,4 +37,4 @@ runs:
 
     - name: Run dialyzer
       shell: sh
-      run: mix dialyzer
+      run: mix dialyzer --format github
