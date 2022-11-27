@@ -1,0 +1,34 @@
+name: ASDF Get Versions
+description: Returns the versions from the .tool-versions file managed by asdf
+author: Straw Hat Team
+
+inputs:
+  version-file:
+    description: The path to the .tool-versions file
+    required: false
+    default: .tool-versions
+
+outputs:
+  versions:
+    description: "The versions from the .tool-versions file as a JSON string"
+    value: ${{ steps.get-versions.outputs.versions }}
+
+runs:
+  using: composite
+  steps:
+    - name: Get the versions from the .tool-versions file
+      shell: bash
+      id: get-versions
+      run: |
+        TOOL_VERSIONS_FILE_PATH=${{ inputs.version-file }}
+        if [ ! -f $TOOL_VERSIONS_FILE_PATH ]; then
+          echo "\033[0;31m.tool-versions file not found"
+          exit 1
+        fi
+        VERSIONS=()
+          while read -r line; do
+          read -r package version <<< "$line"
+          echo "found package: '$package' with version: '$version'"
+          VERSIONS+=("\"$package\": \"$version\"")
+        done < $TOOL_VERSIONS_FILE_PATH
+        echo "versions={$(IFS=,; echo "${VERSIONS[*]}")}" >> $GITHUB_OUTPUT
