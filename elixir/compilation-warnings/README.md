@@ -23,5 +23,5 @@ Compiles the code treating warnings as errors.
             with:
               elixir-version: '1.11' # optional, fallback to use .tool-versions
               otp-version: '22.3' # optional, fallback to use .tool-versions
+              version-type: 'loose' # optional, fallback to strict
     ```
-
