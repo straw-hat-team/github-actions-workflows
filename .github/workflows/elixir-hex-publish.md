@@ -33,6 +33,7 @@ jobs:
     with:
       elixir-version: '1.11' # optional, fallback to use .tool-versions 
       otp-version: '22.3' # optional, fallback to use .tool-versions
+      version-type: 'loose' # optional, fallback to strict
     secrets:
       HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
 ```
