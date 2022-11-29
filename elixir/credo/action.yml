@@ -9,15 +9,20 @@ inputs:
   otp-version:
     description: The Erlang version. It fallback to .tool-versions if not specified
     required: false
+  version-type:
+    description: The versioning type check, either strict or loose
+    required: false
+    default: strict
 
 runs:
   using: composite
   steps:
     - name: Setup Elixir
-      uses: straw-hat-team/github-actions-workflows/elixir/setup@v1.3.0
+      uses: straw-hat-team/github-actions-workflows/elixir/setup@v1.6.1
       with:
         elixir-version: ${{ inputs.elixir-version }}
         otp-version: ${{ inputs.otp-version }}
+        version-type: ${{ inputs.version-type }}
 
     - name: Run Linter
       shell: sh
