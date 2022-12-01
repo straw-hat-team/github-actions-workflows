@@ -26,7 +26,7 @@ runs:
           exit 1
         fi
         VERSIONS=()
-          while read -r line; do
+        while read -r line; do
           read -r package version <<< "$line"
           echo "found package: '$package' with version: '$version'"
           VERSIONS+=("\"$package\": \"$version\"")
