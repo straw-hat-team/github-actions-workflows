@@ -63,9 +63,7 @@ Runs [Dialyxir](https://github.com/jeremyjh/dialyxir) in your project.
           # ...
           dialyzer: [
             # ... other dialyzer settings
-            plt_core_path: "priv/plts", # must be this
             plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
-            # must be this
           ]
         ]
       end
