@@ -25,7 +25,7 @@ runs:
         version-type: ${{ inputs.version-type }}
 
     - name: Restore PLT cache
-      uses: actions/cache@v2
+      uses: actions/cache/restore@v3
       id: plt_cache
       with:
         key: |
@@ -39,6 +39,16 @@ runs:
       shell: sh
       if: steps.plt_cache.outputs.cache-hit != 'true'
       run: mix dialyzer --plt
+
+    - name: Save PLT cache
+      uses: actions/cache/save@v3
+      if: steps.plt_cache.outputs.cache-hit != 'true'
+      id: plt_cache_save
+      with:
+        key: |
+          ${{ runner.os }}-${{ steps.beam.outputs.elixir-version }}-${{ steps.beam.outputs.otp-version }}-plt
+        path: |
+          priv/plts
 
     - name: Run dialyzer
       shell: sh
