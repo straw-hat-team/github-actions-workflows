@@ -3,7 +3,9 @@
 Ensures that the Pull Request title matches
 the [Conventional Commits spec](https://www.conventionalcommits.org/en/v1.0.0/).
 
-- [How-to Guides](#how-to-guides)
+- [Semantic Pull Request](#semantic-pull-request)
+  - [How-to Guides](#how-to-guides)
+    - [Get Started](#get-started)
 
 ## How-to Guides
 
@@ -18,6 +20,8 @@ the [Conventional Commits spec](https://www.conventionalcommits.org/en/v1.0.0/).
           - opened
           - edited
           - synchronize
+    permissions:
+      pull-requests: write
     #...
     jobs:
       something:

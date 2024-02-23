@@ -18,19 +18,15 @@ runs:
   using: composite
   steps:
     - name: Check Pull Request Title
-      uses: amannn/action-semantic-pull-request@v3
+      id: lint_pr_title
+      uses: amannn/action-semantic-pull-request@v5.4.0
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
       with:
         types: |
           feat
           fix
-          docs
           refactor
-          perf
-          test
-          build
-          ci
           chore
           revert
         requireScope: ${{ inputs.require-scope }}
@@ -42,3 +38,29 @@ runs:
           doesn't start with an uppercase character.
         wip: true
         validateSingleCommit: true
+    - uses: marocchino/sticky-pull-request-comment@v2.9.0
+      if: always() && (steps.lint_pr_title.outputs.error_message != null)
+      with:
+        header: pr-title-lint-error
+        message: |
+          We require pull request titles to follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/)
+          to ensure that the versioning of the project is done correctly.
+
+          ### Supported Types
+
+          - feat: A new feature, resulting in a MINOR version bump.
+          - fix: A bug fix, resulting in a PATCH version bump.
+          - refactor: A code change that neither fixes a bug nor adds a feature, resulting in a PATCH version bump.
+          - chore: Changes unrelated to the release code, resulting in no version bump.
+          - revert: Reverts a previous commit.
+
+          ### Details:
+
+          ```
+          ${{ steps.lint_pr_title.outputs.error_message }}
+          ```
+    - if: ${{ steps.lint_pr_title.outputs.error_message == null }}
+      uses: marocchino/sticky-pull-request-comment@v2.9.0
+      with:
+        header: pr-title-lint-error
+        delete: true
