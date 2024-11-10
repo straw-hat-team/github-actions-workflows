@@ -44,8 +44,29 @@ on:
         type: boolean
         required: false
         default: true
+      check-retired-pkg-enabled:
+        description: Enables the check retired packages job
+        type: boolean
+        required: false
+        default: true
 
 jobs:
+  hex-audit:
+    name: Check Retired Packages
+    if: ${{ inputs.check-retired-pkg-enabled }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Elixir
+        uses: straw-hat-team/github-actions-workflows/elixir/setup@v1.6.1
+        with:
+          elixir-version: ${{ inputs.elixir-version }}
+          otp-version: ${{ inputs.otp-version }}
+          version-type: ${{ inputs.version-type }}
+      - name: Check retired packages
+        run: mix hex.audit
+
   check-unused-deps:
     name: Unused Dependencies
     if: ${{ inputs.check-unused-deps-enabled }}
