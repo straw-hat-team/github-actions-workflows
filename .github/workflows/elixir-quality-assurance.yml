@@ -54,7 +54,7 @@ jobs:
   hex-audit:
     name: Check Retired Packages
     if: ${{ inputs.check-retired-pkg-enabled }}
-    runs-on: ubuntu22
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -70,7 +70,7 @@ jobs:
   check-unused-deps:
     name: Unused Dependencies
     if: ${{ inputs.check-unused-deps-enabled }}
-    runs-on: ubuntu22
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -86,7 +86,7 @@ jobs:
   compilation-warning:
     name: Compilation Warnings
     if: ${{ inputs.compilation-warning-enabled }}
-    runs-on: ubuntu22
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -99,7 +99,7 @@ jobs:
   test:
     name: Test
     if: ${{ inputs.testing-enabled }}
-    runs-on: ubuntu22
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -112,7 +112,7 @@ jobs:
   format:
     name: Format
     if: ${{ inputs.formatter-enabled }}
-    runs-on: ubuntu22
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: straw-hat-team/github-actions-workflows/elixir/format@v1.7.3
@@ -124,7 +124,7 @@ jobs:
   credo:
     name: Credo
     if: ${{ inputs.credo-enabled }}
-    runs-on: ubuntu22
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: straw-hat-team/github-actions-workflows/elixir/credo@v1.7.3
@@ -136,7 +136,7 @@ jobs:
   dialyzer:
     name: Dialyzer
     if: ${{ inputs.dialyzer-enabled }}
-    runs-on: ubuntu22
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: straw-hat-team/github-actions-workflows/elixir/dialyzer@v1.7.3

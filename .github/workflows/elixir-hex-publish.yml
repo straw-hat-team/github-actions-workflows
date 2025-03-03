@@ -22,7 +22,7 @@ on:
 jobs:
   publish:
     name: Publish to Hex.pm
-    runs-on: ubuntu22
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: straw-hat-team/github-actions-workflows/elixir/publish@v1.7.3
