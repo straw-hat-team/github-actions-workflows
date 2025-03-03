@@ -18,7 +18,7 @@ runs:
   using: composite
   steps:
     - name: Setup Elixir
-      uses: straw-hat-team/github-actions-workflows/elixir/setup@v1.6.1
+      uses: straw-hat-team/github-actions-workflows/elixir/setup@v1.7.1
       with:
         elixir-version: ${{ inputs.elixir-version }}
         otp-version: ${{ inputs.otp-version }}
