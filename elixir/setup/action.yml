@@ -32,7 +32,7 @@ runs:
       if: ${{ ! inputs.otp-version }}
 
     - name: Set up Elixir
-      uses: erlef/setup-beam@v1.15.0
+      uses: erlef/setup-beam@v1
       with:
         elixir-version: ${{ inputs.elixir-version || steps.tool-versions-elixir.outputs.plugin-version }}
         otp-version: ${{ inputs.otp-version || steps.tool-versions-erlang.outputs.plugin-version }}
