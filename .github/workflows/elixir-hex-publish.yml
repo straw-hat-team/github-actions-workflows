@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: straw-hat-team/github-actions-workflows/elixir/publish@v1.7.5
+      - uses: straw-hat-team/github-actions-workflows/elixir/publish@v1.7.7
         with:
           elixir-version: ${{ inputs.elixir-version }}
           otp-version: ${{ inputs.otp-version }}
