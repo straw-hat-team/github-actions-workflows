@@ -103,7 +103,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - uses: straw-hat-team/github-actions-workflows/elixir/test@v1.7.5
+      - uses: straw-hat-team/github-actions-workflows/elixir/test@v1.7.6
         with:
           elixir-version: ${{ inputs.elixir-version }}
           otp-version: ${{ inputs.otp-version }}

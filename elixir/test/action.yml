@@ -16,7 +16,7 @@ inputs:
   coverage:
     description: Defines if the coverage should be generated
     required: false
-    default: false
+    default: "false"
 
 runs:
   using: composite
