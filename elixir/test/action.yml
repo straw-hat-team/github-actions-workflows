@@ -16,7 +16,11 @@ inputs:
   coverage:
     description: Defines if the coverage should be generated
     required: false
-    default: "false"
+    type: choice
+    options:
+      - test
+      - coveralls.github
+    default: coveralls.github
 
 runs:
   using: composite
@@ -29,11 +33,11 @@ runs:
         version-type: ${{ inputs.version-type }}
 
     - name: Run test
-      if: inputs.coverage == "false"
+      if: inputs.coverage == 'test'
       shell: sh
       run: mix test
 
     - name: Run coveralls.github
-      if: inputs.coverage == "coveralls"
+      if: inputs.coverage == 'coveralls.github'
       shell: sh
       run: mix coveralls.github
