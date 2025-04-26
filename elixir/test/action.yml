@@ -20,7 +20,7 @@ inputs:
     options:
       - test
       - coveralls.github
-    default: coveralls.github
+    default: test
 
 runs:
   using: composite
