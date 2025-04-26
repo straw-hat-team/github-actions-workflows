@@ -35,9 +35,13 @@ runs:
     - name: Run test
       if: inputs.coverage == 'test'
       shell: sh
+      env:
+        MIX_ENV: test
       run: mix test
 
     - name: Run coveralls.github
       if: inputs.coverage == 'coveralls.github'
       shell: sh
+      env:
+        MIX_ENV: test
       run: mix coveralls.github
