@@ -14,6 +14,14 @@ inputs:
     required: false
     default: strict
 
+outputs:
+  elixir-version:
+    description: The resolved Elixir version
+    value: ${{ steps.setup-beam.outputs.elixir-version }}
+  otp-version:
+    description: The resolved OTP version
+    value: ${{ steps.setup-beam.outputs.otp-version }}
+
 runs:
   using: composite
   steps:
@@ -33,6 +41,7 @@ runs:
 
     - name: Set up Elixir
       uses: erlef/setup-beam@v1
+      id: setup-beam
       with:
         elixir-version: ${{ inputs.elixir-version || steps.tool-versions-elixir.outputs.plugin-version }}
         otp-version: ${{ inputs.otp-version || steps.tool-versions-erlang.outputs.plugin-version }}

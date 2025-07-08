@@ -39,11 +39,12 @@ runs:
     - name: Create PLTs
       shell: sh
       if: steps.plt_cache.outputs.cache-hit != 'true'
+      id: create_plts
       run: mix dialyzer --plt
 
     - name: Save PLT cache
       uses: actions/cache/save@v4
-      if: steps.plt_cache.outputs.cache-hit != 'true'
+      if: steps.plt_cache.outputs.cache-hit != 'true' && steps.create_plts.outcome == 'success'
       id: plt_cache_save
       with:
         key: |
