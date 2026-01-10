@@ -25,27 +25,14 @@ outputs:
 runs:
   using: composite
   steps:
-    - name: Reading Elixir version from .tool-versions
-      id: tool-versions-elixir
-      uses: straw-hat-team/github-actions-workflows/asdf/get-version@v1.7.7
-      with:
-        plugin-name: elixir
-      if: ${{ ! inputs.elixir-version }}
-
-    - name: Reading Erlang version from .tool-versions
-      id: tool-versions-erlang
-      uses: straw-hat-team/github-actions-workflows/asdf/get-version@v1.7.7
-      with:
-        plugin-name: erlang
-      if: ${{ ! inputs.otp-version }}
-
     - name: Set up Elixir
       uses: erlef/setup-beam@v1
       id: setup-beam
       with:
-        elixir-version: ${{ inputs.elixir-version || steps.tool-versions-elixir.outputs.plugin-version }}
-        otp-version: ${{ inputs.otp-version || steps.tool-versions-erlang.outputs.plugin-version }}
+        elixir-version: ${{ inputs.elixir-version }}
+        otp-version: ${{ inputs.otp-version }}
         version-type: ${{ inputs.version-type }}
+        version-file: .tool-versions
 
     - name: Restore dependencies cache
       uses: actions/cache@v4

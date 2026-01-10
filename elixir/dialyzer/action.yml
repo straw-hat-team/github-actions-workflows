@@ -18,7 +18,7 @@ runs:
   using: composite
   steps:
     - name: Setup Elixir
-      uses: straw-hat-team/github-actions-workflows/elixir/setup@v1.7.7
+      uses: ./elixir/setup
       id: beam
       with:
         elixir-version: ${{ inputs.elixir-version }}
