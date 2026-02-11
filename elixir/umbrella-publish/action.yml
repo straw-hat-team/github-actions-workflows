@@ -49,6 +49,10 @@ runs:
           echo "verifying $ROOT/apps/$RELEASE_TAG_PACKAGE_NAME directory exists"
           if [ -d "$ROOT/apps/$RELEASE_TAG_PACKAGE_NAME" ]; then
             cd "$ROOT/apps/$RELEASE_TAG_PACKAGE_NAME"
+
+            export MIX_IN_UMBRELLA_DEPS=false
+            mix deps.get
+
             CURRENT_PACKAGE_MIX_VERSION=$(mix run --no-compile --no-start -e 'Mix.Project.config() |> Keyword.get(:version) |> IO.puts()')
 
             if [ "$CURRENT_PACKAGE_MIX_VERSION" = "$RELEASE_TAG_PACKAGE_VERSION" ]; then
