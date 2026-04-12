@@ -28,7 +28,7 @@ jobs:
     name: Publish Docs to Hex.pm
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - uses: straw-hat-team/github-actions-workflows/elixir/publish-docs@master
         with:
           elixir-version: ${{ inputs.elixir-version }}

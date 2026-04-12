@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
       - name: Setup Elixir
         uses: straw-hat-team/github-actions-workflows/elixir/setup@master
         with:
@@ -73,7 +73,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
       - name: Setup Elixir
         uses: straw-hat-team/github-actions-workflows/elixir/setup@master
         with:
@@ -89,7 +89,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
       - uses: straw-hat-team/github-actions-workflows/elixir/compilation-warnings@master
         with:
           elixir-version: ${{ inputs.elixir-version }}
@@ -102,7 +102,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
       - uses: straw-hat-team/github-actions-workflows/elixir/test@master
         with:
           elixir-version: ${{ inputs.elixir-version }}

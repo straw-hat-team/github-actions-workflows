@@ -22,7 +22,7 @@ jobs:
     if: ${{ inputs.jest-enabled }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - uses: straw-hat-team/github-actions-workflows/nodejs/setup@v1.7.7
       - shell: sh
         run: yarn install --immutable
@@ -37,7 +37,7 @@ jobs:
     if: ${{ inputs.prettier-enabled }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - uses: straw-hat-team/github-actions-workflows/nodejs/setup@v1.7.7
       - shell: sh
         run: yarn install --immutable

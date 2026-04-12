@@ -6,7 +6,7 @@ runs:
   using: composite
   steps:
     - name: Check stale issues and pull requests
-      uses: actions/stale@v8
+      uses: actions/stale@v10
       with:
         days-before-issue-stale: 30
         days-before-issue-close: 15
