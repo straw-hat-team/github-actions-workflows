@@ -114,7 +114,7 @@ jobs:
     if: ${{ inputs.formatter-enabled }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - uses: straw-hat-team/github-actions-workflows/elixir/format@master
         with:
           elixir-version: ${{ inputs.elixir-version }}
@@ -126,7 +126,7 @@ jobs:
     if: ${{ inputs.credo-enabled }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - uses: straw-hat-team/github-actions-workflows/elixir/credo@master
         with:
           elixir-version: ${{ inputs.elixir-version }}
@@ -138,7 +138,7 @@ jobs:
     if: ${{ inputs.dialyzer-enabled }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - uses: straw-hat-team/github-actions-workflows/elixir/dialyzer@master
         with:
           elixir-version: ${{ inputs.elixir-version }}
