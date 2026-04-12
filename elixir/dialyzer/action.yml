@@ -26,7 +26,7 @@ runs:
         version-type: ${{ inputs.version-type }}
 
     - name: Restore PLT cache
-      uses: actions/cache/restore@v4
+      uses: actions/cache/restore@v5
       id: plt_cache
       with:
         key: |
@@ -43,7 +43,7 @@ runs:
       run: mix dialyzer --plt
 
     - name: Save PLT cache
-      uses: actions/cache/save@v4
+      uses: actions/cache/save@v5
       if: steps.plt_cache.outputs.cache-hit != 'true' && steps.create_plts.outcome == 'success'
       id: plt_cache_save
       with:
