@@ -1,0 +1,43 @@
+name: Elixir Publish Docs
+description: Publish an Elixir package documentation to Hex.pm
+author: Straw Hat Team
+
+inputs:
+  elixir-version:
+    description: The Elixir version. It fallback to .tool-versions if not specified
+    required: false
+  otp-version:
+    description: The Erlang version. It fallback to .tool-versions if not specified
+    required: false
+  version-type:
+    description: The versioning type check, either strict or loose
+    required: false
+    default: strict
+  hex-api-key:
+    description: The hex.pm API key
+    required: true
+  package-name:
+    description: The package name. For umbrella apps, resolves to apps/<package-name>. Omit for single-package repos.
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Elixir
+      uses: straw-hat-team/github-actions-workflows/elixir/setup@master
+      with:
+        elixir-version: ${{ inputs.elixir-version }}
+        otp-version: ${{ inputs.otp-version }}
+        version-type: ${{ inputs.version-type }}
+    - name: Run Hex Publish Docs
+      shell: bash
+      run: |
+        if [ -n "$PACKAGE_NAME" ]; then
+          cd "apps/$PACKAGE_NAME"
+          export MIX_IN_UMBRELLA_DEPS=false
+          mix deps.get
+        fi
+        mix hex.publish docs --yes
+      env:
+        HEX_API_KEY: ${{ inputs.hex-api-key }}
+        PACKAGE_NAME: ${{ inputs.package-name }}

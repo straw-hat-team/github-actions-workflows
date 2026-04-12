@@ -1,0 +1,38 @@
+on:
+  workflow_call:
+    inputs:
+      elixir-version:
+        description: The Elixir version. It fallback to .tool-versions if not specified
+        type: string
+        required: false
+      otp-version:
+        description: The Erlang version. It fallback to .tool-versions if not specified
+        type: string
+        required: false
+      version-type:
+        description: The versioning type check, either strict or loose
+        type: string
+        required: false
+        default: strict
+      package-name:
+        description: The package name. For umbrella apps, resolves to apps/<package-name>. Omit for single-package repos.
+        type: string
+        required: false
+    secrets:
+      HEX_API_KEY:
+        description: The hex.pm API key
+        required: true
+
+jobs:
+  publish-docs:
+    name: Publish Docs to Hex.pm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: straw-hat-team/github-actions-workflows/elixir/publish-docs@master
+        with:
+          elixir-version: ${{ inputs.elixir-version }}
+          otp-version: ${{ inputs.otp-version }}
+          version-type: ${{ inputs.version-type }}
+          hex-api-key: ${{ secrets.HEX_API_KEY }}
+          package-name: ${{ inputs.package-name }}
