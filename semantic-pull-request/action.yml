@@ -38,7 +38,7 @@ runs:
           doesn't start with an uppercase character.
         wip: true
         validateSingleCommit: true
-    - uses: marocchino/sticky-pull-request-comment@v2.9.0
+    - uses: marocchino/sticky-pull-request-comment@v3.0.4
       if: always() && (steps.lint_pr_title.outputs.error_message != null)
       with:
         header: pr-title-lint-error
