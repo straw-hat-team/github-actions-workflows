@@ -13,12 +13,12 @@ runs:
     - id: tool-versions-nodejs
       name: Reading NodeJS version from .tool-versions
       if: ${{ ! inputs.nodejs-version }}
-      uses: straw-hat-team/github-actions-workflows/asdf/get-version@master
+      uses: straw-hat-team/github-actions-workflows/asdf/get-version@9d9de721069136b981894947c85a0c27ab14a392 # master
       with:
         plugin-name: nodejs
 
     - name: Using Node.js@${{ env.NODE_VERSION }}
-      uses: actions/setup-node@v6
+      uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
       with:
         node-version: ${{ env.NODE_VERSION }}
       env:
