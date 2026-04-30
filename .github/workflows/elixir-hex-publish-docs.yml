@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-      - uses: straw-hat-team/github-actions-workflows/elixir/publish-docs@380a7d55273bbfff3291d0febae9caece989dce6 # master
+      - uses: straw-hat-team/github-actions-workflows/elixir/publish-docs@55b445acf7641ffd48132742e4fe278718040d13 # master
         with:
           elixir-version: ${{ inputs.elixir-version }}
           otp-version: ${{ inputs.otp-version }}

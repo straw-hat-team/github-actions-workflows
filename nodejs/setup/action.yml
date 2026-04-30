@@ -13,7 +13,7 @@ runs:
     - id: tool-versions-nodejs
       name: Reading NodeJS version from .tool-versions
       if: ${{ ! inputs.nodejs-version }}
-      uses: straw-hat-team/github-actions-workflows/asdf/get-version@380a7d55273bbfff3291d0febae9caece989dce6 # master
+      uses: straw-hat-team/github-actions-workflows/asdf/get-version@55b445acf7641ffd48132742e4fe278718040d13 # master
       with:
         plugin-name: nodejs
 
