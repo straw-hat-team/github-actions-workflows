@@ -24,8 +24,8 @@ jobs:
     name: Publish to Hex.pm
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: straw-hat-team/github-actions-workflows/elixir/publish@v1.7.7
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: straw-hat-team/github-actions-workflows/elixir/publish@d9f6ba300b84655b70cc33c885e8848f9dde8efa # v1.7.7
         with:
           elixir-version: ${{ inputs.elixir-version }}
           otp-version: ${{ inputs.otp-version }}
