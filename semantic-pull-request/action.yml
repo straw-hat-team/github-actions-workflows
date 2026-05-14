@@ -13,10 +13,6 @@ inputs:
   scopes:
     description: Configure which scopes are allowed.
     required: false
-  allowed-commit-types:
-    description: Comma-separated list of allowed Conventional Commit types for commit-level validation.
-    required: false
-    default: 'feat,fix,refactor,chore,revert'
 
 runs:
   using: composite
@@ -45,7 +41,7 @@ runs:
     - name: Check Pull Request Commits
       uses: webiny/action-conventional-commits@8bc41ff4e7d423d56fa4905f6ff79209a78776c7 # v1.3.0
       with:
-        allowed-commit-types: ${{ inputs.allowed-commit-types }}
+        allowed-commit-types: 'feat,fix,refactor,chore,revert'
     - uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0 # v3.0.4
       if: always() && (steps.lint_pr_title.outputs.error_message != null)
       with:
