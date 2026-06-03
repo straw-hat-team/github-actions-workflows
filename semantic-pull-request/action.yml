@@ -39,7 +39,7 @@ runs:
         wip: true
         validateSingleCommit: true
     - name: Check Pull Request Commits
-      uses: webiny/action-conventional-commits@8bc41ff4e7d423d56fa4905f6ff79209a78776c7 # v1.3.0
+      uses: webiny/action-conventional-commits@7f91b1595ca1951cdb671ddc9f07a49081ec5b69 # v1.4.2
       with:
         allowed-commit-types: 'feat,fix,refactor,chore,revert'
     - uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0 # v3.0.4
