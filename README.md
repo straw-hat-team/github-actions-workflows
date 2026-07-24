@@ -15,6 +15,10 @@ A set of GitHub Actions Workflow Templates.
 
 - [asdf/get-version](./asdf/get-version/README.md): return the version for a given asdf plugin.
 
+#### mise
+
+- [mise/get-version](./mise/get-version/README.md): return the version for a given mise tool.
+
 #### Elixir-Lang
 
 - [elixir/compilation-warnings](./elixir/compilation-warnings/README.md): compiles the code treating warnings as errors.

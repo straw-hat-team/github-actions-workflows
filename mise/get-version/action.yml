@@ -1,0 +1,41 @@
+name: Mise Get Version
+description: Returns the version of the tool from mise.toml file managed by mise
+author: Straw Hat Team
+
+inputs:
+  plugin-name:
+    description: The name of the tool you want to get the version of
+    required: true
+
+outputs:
+  plugin-version:
+    description: "The version of the tool"
+    value: ${{ steps.get-version.outputs.plugin-version }}
+
+runs:
+  using: composite
+  steps:
+    - name: Get the version of the tool from mise.toml file
+      id: get-version
+      shell: bash
+      env:
+        PLUGIN_NAME: ${{ inputs.plugin-name }}
+      run: |
+        if [ ! -f mise.toml ]; then
+          echo "mise.toml file not found"
+          exit 1
+        fi
+        PLUGIN_VERSION=$(python3 -c "
+        import os, tomllib
+        with open('mise.toml', 'rb') as f:
+            data = tomllib.load(f)
+        value = data.get('tools', {}).get(os.environ['PLUGIN_NAME'])
+        if isinstance(value, dict):
+            value = value.get('version', '')
+        print(value or '')
+        ")
+        if [ -z "$PLUGIN_VERSION" ]; then
+          echo "'$PLUGIN_NAME' tool not found in mise.toml file"
+          exit 1
+        fi
+        echo "plugin-version=$PLUGIN_VERSION" >> $GITHUB_OUTPUT
