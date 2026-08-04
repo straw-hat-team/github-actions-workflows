@@ -43,7 +43,7 @@ runs:
       run: mix dialyzer --plt
 
     - name: Save PLT cache
-      uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+      uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v5
       if: steps.plt_cache.outputs.cache-hit != 'true' && steps.create_plts.outcome == 'success'
       id: plt_cache_save
       with:
