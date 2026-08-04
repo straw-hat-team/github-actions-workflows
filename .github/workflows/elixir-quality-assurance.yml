@@ -49,6 +49,14 @@ on:
         type: boolean
         required: false
         default: true
+      mix-in-umbrella-deps:
+        description: Sets MIX_IN_UMBRELLA_DEPS=true so umbrella apps resolve sibling apps as in_umbrella dependencies
+        type: boolean
+        required: false
+        default: false
+
+env:
+  MIX_IN_UMBRELLA_DEPS: ${{ inputs.mix-in-umbrella-deps }}
 
 jobs:
   hex-audit:
