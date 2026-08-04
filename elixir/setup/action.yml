@@ -26,7 +26,7 @@ runs:
   using: composite
   steps:
     - name: Set up Elixir
-      uses: erlef/setup-beam@54075bcc5e249e4758d363f27d099f55d843f124 # v1
+      uses: erlef/setup-beam@54075bcc5e249e4758d363f27d099f55d843f124 # v1.24.1
       id: setup-beam
       with:
         elixir-version: ${{ inputs.elixir-version }}
@@ -35,7 +35,7 @@ runs:
         version-file: .tool-versions
 
     - name: Restore dependencies cache
-      uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+      uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
       with:
         path: deps
         key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
