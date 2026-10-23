@@ -58,7 +58,7 @@ without storing a Hex API key.
 1. Add a workload identity to the package on hex.pm that names the repository, the workflow filename, and the GitHub
    environment of the publishing job.
 2. Give the job that environment and the `id-token: write` permission, and leave `hex-api-key` empty.
-3. Until Hex 2.6.0 is released, set `hex-ref` to a `hexpm/hex` commit that supports Workload Identity:
+3. Use the action as follows, `hex-ref` defaults to a Hex 2.6.0-dev commit that supports Workload Identity:
 
     ```yml
     jobs:
@@ -73,7 +73,6 @@ without storing a Hex API key.
           - uses: actions/checkout@v2
           - uses: straw-hat-team/github-actions-workflows/elixir/umbrella-publish@master
             with:
-              hex-ref: 4920866da55ec8e3b73f224d953309508f900e77
               ref-name: ${{ github.ref_name }}
     ```
 

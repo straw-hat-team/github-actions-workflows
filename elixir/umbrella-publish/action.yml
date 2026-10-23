@@ -18,8 +18,9 @@ inputs:
     required: false
     default: ""
   hex-ref:
-    description: The hexpm/hex Git ref to install Hex from instead of the latest release
+    description: The hexpm/hex Git ref to install Hex from instead of the latest release. Defaults to a Hex 2.6.0-dev commit that supports Workload Identity
     required: false
+    default: 4920866da55ec8e3b73f224d953309508f900e77
   ref-name:
     description: The GitHub Release Tag Name with the format of "[package name]@v[version]"
     required: true
