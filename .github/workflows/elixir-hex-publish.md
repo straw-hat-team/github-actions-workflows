@@ -37,3 +37,21 @@ jobs:
     secrets:
       HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
 ```
+
+### Publish with Workload Identity
+
+1. Complete [Publish with Workload Identity](../../elixir/publish/README.md#publish-with-workload-identity) from
+   [elixir/publish](../../elixir/publish/README.md). The workflow filename the identity names is your workflow that calls
+   this one, not `elixir-hex-publish.yml`.
+2. Grant the calling job `id-token: write`, pass the environment the identity names, and leave `HEX_API_KEY` unset:
+
+```yaml
+jobs:
+  publish-to-hex-pm:
+    permissions:
+      contents: read
+      id-token: write
+    uses: straw-hat-team/github-actions-workflows/.github/workflows/elixir-hex-publish.yml@master
+    with:
+      environment: hexpm
+```
