@@ -50,6 +50,33 @@ event.
               ref-name: ${{ github.ref_name }} # the GitHub Release Tag Name with the format of "[package name]@v[version]"
     ```
 
+### Publish with Workload Identity
+
+Hex [Workload Identity](https://hex.pm/docs/workload-identity), sometimes also known as Trusted Publishing, publishes
+without storing a Hex API key. It requires Elixir 1.12 and OTP 27 or later, and it can't publish the first release of a public
+package, so publish that release with a Hex account or API key first.
+
+1. Add a workload identity to the package on hex.pm that names the repository, the workflow filename, and the GitHub
+   environment of the publishing job.
+2. Give the job that environment and the `id-token: write` permission, and leave `hex-api-key` empty.
+3. Use the action as follows, `hex-ref` defaults to a Hex 2.6.0-dev commit that supports Workload Identity:
+
+    ```yml
+    jobs:
+      publish:
+        name: Publish to Hex.pm
+        runs-on: ubuntu-latest
+        environment: release
+        permissions:
+          contents: read
+          id-token: write
+        steps:
+          - uses: actions/checkout@v2
+          - uses: straw-hat-team/github-actions-workflows/elixir/umbrella-publish@master
+            with:
+              ref-name: ${{ github.ref_name }}
+    ```
+
 ### Fix ExDoc GitHub Linking
 
 1. Open the `mix.exs` file of the package you want to publish.
