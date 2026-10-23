@@ -33,3 +33,28 @@ Publish an Elixir package to Hex.pm.
               version-type: 'loose' # optional, fallback to strict
               hex-api-key: ${{ secrets.HEX_API_KEY }} # (see step 2)
     ```
+
+### Publish with Workload Identity
+
+Hex [Workload Identity](https://hex.pm/docs/workload-identity), sometimes also known as Trusted Publishing, publishes
+without storing a Hex API key. It requires Elixir 1.12 and OTP 27 or later, and it can't publish the first release of a public
+package, so publish that release with a Hex account or API key first.
+
+1. Add a workload identity to the package on hex.pm that names the repository, the workflow filename, and the GitHub
+   environment of the publishing job.
+2. Give the job that environment and the `id-token: write` permission, and leave `hex-api-key` empty.
+3. Use the action as follows, `hex-ref` defaults to a Hex 2.6.0-dev commit that supports Workload Identity:
+
+    ```yml
+    jobs:
+      publish:
+        name: Publish to Hex.pm
+        runs-on: ubuntu-latest
+        environment: hexpm
+        permissions:
+          contents: read
+          id-token: write
+        steps:
+          - uses: actions/checkout@v2
+          - uses: straw-hat-team/github-actions-workflows/elixir/publish@master
+    ```

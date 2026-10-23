@@ -66,7 +66,7 @@ package, so publish that release with a Hex account or API key first.
       publish:
         name: Publish to Hex.pm
         runs-on: ubuntu-latest
-        environment: release
+        environment: hexpm
         permissions:
           contents: read
           id-token: write
