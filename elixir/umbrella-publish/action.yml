@@ -18,7 +18,7 @@ inputs:
     required: false
     default: ""
   hex-ref:
-    description: The hexpm/hex Git ref to install Hex from instead of the latest release. Defaults to a Hex 2.6.0-dev commit that supports Workload Identity
+    description: The hexpm/hex Git ref to install Hex from when hex-api-key is empty. Defaults to a Hex 2.6.0-dev commit that supports Workload Identity and requires Elixir 1.12 or later
     required: false
     default: 4920866da55ec8e3b73f224d953309508f900e77
   ref-name:
@@ -41,7 +41,7 @@ runs:
         otp-version: ${{ inputs.otp-version }}
         version-type: ${{ inputs.version-type }}
     - name: Install Hex
-      if: inputs.hex-ref != ''
+      if: inputs.hex-ref != '' && inputs.hex-api-key == ''
       env:
         HEX_REF: ${{ inputs.hex-ref }}
       shell: bash
