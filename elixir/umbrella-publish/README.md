@@ -53,7 +53,7 @@ event.
 ### Publish with Workload Identity
 
 Hex [Workload Identity](https://hex.pm/docs/workload-identity), sometimes also known as Trusted Publishing, publishes
-without storing a Hex API key. It requires Elixir 1.12 or later, and it can't publish the first release of a public
+without storing a Hex API key. It requires Elixir 1.12 and OTP 27 or later, and it can't publish the first release of a public
 package, so publish that release with a Hex account or API key first.
 
 1. Add a workload identity to the package on hex.pm that names the repository, the workflow filename, and the GitHub
