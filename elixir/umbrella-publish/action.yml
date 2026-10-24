@@ -18,9 +18,9 @@ inputs:
     required: false
     default: ""
   hex-ref:
-    description: The hexpm/hex Git ref to install Hex from when hex-api-key is empty. Defaults to a Hex 2.6.0-dev commit that supports Workload Identity and requires Elixir 1.12 and OTP 27 or later
+    description: The hexpm/hex Git ref to install Hex from when hex-api-key is empty. Defaults to Hex 2.6.0, the first release with Workload Identity, which requires Elixir 1.12 and OTP 27 or later
     required: false
-    default: 4920866da55ec8e3b73f224d953309508f900e77
+    default: edec2dda0968d5a6babd202bad17fcea2d1640bb
   ref-name:
     description: The GitHub Release Tag Name with the format of "[package name]@v[version]"
     required: true

@@ -59,7 +59,7 @@ package, so publish that release with a Hex account or API key first.
 1. Add a workload identity to the package on hex.pm that names the repository, the workflow filename, and the GitHub
    environment of the publishing job.
 2. Give the job that environment and the `id-token: write` permission, and leave `hex-api-key` empty.
-3. Use the action as follows, `hex-ref` defaults to a Hex 2.6.0-dev commit that supports Workload Identity:
+3. Use the action as follows, `hex-ref` defaults to Hex 2.6.0, the first release with Workload Identity:
 
     ```yml
     jobs:
