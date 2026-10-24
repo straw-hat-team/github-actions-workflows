@@ -23,15 +23,6 @@ on:
         type: string
         required: false
         default: ""
-      hex-ref:
-        description: The hexpm/hex Git ref to install Hex from when HEX_API_KEY is not set. Defaults to Hex 2.6.0, the first release with Workload Identity, which requires Elixir 1.12 and OTP 27 or later
-        type: string
-        required: false
-        default: edec2dda0968d5a6babd202bad17fcea2d1640bb
-    secrets:
-      HEX_API_KEY:
-        description: The hex.pm API key. Leave it unset to publish with a Hex Workload Identity
-        required: false
 
 jobs:
   publish-docs:
@@ -45,6 +36,4 @@ jobs:
           elixir-version: ${{ inputs.elixir-version }}
           otp-version: ${{ inputs.otp-version }}
           version-type: ${{ inputs.version-type }}
-          hex-api-key: ${{ secrets.HEX_API_KEY }}
-          hex-ref: ${{ inputs.hex-ref }}
           package-name: ${{ inputs.package-name }}
