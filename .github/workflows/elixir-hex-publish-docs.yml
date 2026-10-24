@@ -31,7 +31,7 @@ jobs:
     environment: ${{ inputs.environment }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: straw-hat-team/github-actions-workflows/elixir/publish-docs@a5940bd7110b44acd9fd23b250e95ed4bc3e8848 # v1.11.0
+      - uses: straw-hat-team/github-actions-workflows/elixir/publish-docs@daf633f9b5b97157f59ce2fcbbc20de4b5ba2bd8 # master
         with:
           elixir-version: ${{ inputs.elixir-version }}
           otp-version: ${{ inputs.otp-version }}
