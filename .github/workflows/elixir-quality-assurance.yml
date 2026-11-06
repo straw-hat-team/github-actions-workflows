@@ -67,7 +67,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Setup Elixir
-        uses: straw-hat-team/github-actions-workflows/elixir/setup@4c1f07e1c73ebfe5e3e466aa407ab7e24e95a4ea # master
+        uses: straw-hat-team/github-actions-workflows/elixir/setup@796065e4b5d42d0185847c89277ebdea127eb589 # master
         with:
           elixir-version: ${{ inputs.elixir-version }}
           otp-version: ${{ inputs.otp-version }}
@@ -83,7 +83,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Setup Elixir
-        uses: straw-hat-team/github-actions-workflows/elixir/setup@4c1f07e1c73ebfe5e3e466aa407ab7e24e95a4ea # master
+        uses: straw-hat-team/github-actions-workflows/elixir/setup@796065e4b5d42d0185847c89277ebdea127eb589 # master
         with:
           elixir-version: ${{ inputs.elixir-version }}
           otp-version: ${{ inputs.otp-version }}
@@ -98,7 +98,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: straw-hat-team/github-actions-workflows/elixir/compilation-warnings@55b445acf7641ffd48132742e4fe278718040d13 # master
+      - uses: straw-hat-team/github-actions-workflows/elixir/compilation-warnings@796065e4b5d42d0185847c89277ebdea127eb589 # master
         with:
           elixir-version: ${{ inputs.elixir-version }}
           otp-version: ${{ inputs.otp-version }}
@@ -111,7 +111,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: straw-hat-team/github-actions-workflows/elixir/test@55b445acf7641ffd48132742e4fe278718040d13 # master
+      - uses: straw-hat-team/github-actions-workflows/elixir/test@796065e4b5d42d0185847c89277ebdea127eb589 # master
         with:
           elixir-version: ${{ inputs.elixir-version }}
           otp-version: ${{ inputs.otp-version }}
@@ -123,7 +123,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: straw-hat-team/github-actions-workflows/elixir/format@55b445acf7641ffd48132742e4fe278718040d13 # master
+      - uses: straw-hat-team/github-actions-workflows/elixir/format@796065e4b5d42d0185847c89277ebdea127eb589 # master
         with:
           elixir-version: ${{ inputs.elixir-version }}
           otp-version: ${{ inputs.otp-version }}
@@ -135,7 +135,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: straw-hat-team/github-actions-workflows/elixir/credo@55b445acf7641ffd48132742e4fe278718040d13 # master
+      - uses: straw-hat-team/github-actions-workflows/elixir/credo@796065e4b5d42d0185847c89277ebdea127eb589 # master
         with:
           elixir-version: ${{ inputs.elixir-version }}
           otp-version: ${{ inputs.otp-version }}
@@ -147,7 +147,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: straw-hat-team/github-actions-workflows/elixir/dialyzer@55b445acf7641ffd48132742e4fe278718040d13 # master
+      - uses: straw-hat-team/github-actions-workflows/elixir/dialyzer@796065e4b5d42d0185847c89277ebdea127eb589 # master
         with:
           elixir-version: ${{ inputs.elixir-version }}
           otp-version: ${{ inputs.otp-version }}
